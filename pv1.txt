@@ -1,0 +1,183 @@
+<Informations about Pocket Voice part I>
+
+The Pocket Voice consists of the following parts:
+
+1. an ASIC which acts as a new MBC and a sound chip controller.
+
+2. a sound chip which can record from the microphone and play sound
+   through the speaker
+
+3. a 4M flash rom (can be replaced with a 64M flash as a future option)
+
+4. a mini microphone.
+
+5. a mini speaker.
+
+
+MBC Memory Map
+--------------
+
+$0000-$5FFF   24K bank 0 ROM area, with selectable offset
+$6000-$7FFF   8K switchable ROM bank
+$A000-$A003   Pocket Voice I/O registers
+
+Notes:
+- $A000-$A003 is reserved for Pocket Voice I/O, so SRAM must be turned off
+  by writing a $0 (or any byte other than $A) before accessing these
+  registers.
+- The offset is set by writing write a value from $00-$FF to $A003
+  ($00-$FF corresponds to ROM offsets $000000, 0x008000, 0x010000,
+  $018000, ... , $7F0000, $7F8000).  This is added to bank zero
+  addresses  as well as the switchable ROM bank addresses.
+- The switchable ROM bank is set by writing the bank number to $6000
+  (low byte) and $7000 (high byte), where the range is $000-$3FF
+  (Max 64Mbit.)  The offset position is added to this value as well.
+
+I/O Registers
+-------------
+$0000 - SRAM Control
+$6000 - Low byte of bank number ($6xxx decoded)
+$7000 - High byte of bank number ($7xxx decoded)
+$A000 - Sound chip command register (write)
+$A000 - Status register (read)
+$A001 - Sound chip data register (read/write)
+$A002 - ?
+$A003 - Rom offset register
+
+Sound Chip Commands
+-------------------
+These commands should be sent to the Sound Chip Command Register, at $A000.
+
+Value   Command
+$80     Enable sound chip
+$81     Play samples
+$82     Record samples
+The sound chip can't to play sound first after power up. It can play sound only after recording has done at least once. So you need to call '.trigerplay' before play sound.
+
+Before using the sound chip, it must be enabled by writing $80 to the command
+register at $A000.
+
+The sample rate of the Pocket Voice is about 3K bytes per second (330us per byte). It is a one bit bit stream sound chip.
+
+Playing Digital Audio
+---------------------
+
+To play digital audio, write $81 to $A000, then write the sample data to
+the data register at $A001, reading the status register at $A000 and
+waiting for bit 3 to be set, indicating the sound chip is ready for a new
+sample.
+
+To stop playing digital audio, write $84 to $A000, delay for at least 10ms
+(about 1 frame period), then write $80 to $A000 to end playing (generate a 'EOP' signal-- End Of Play).
+
+Example Routine:
+
+.playloop:
+                ld      a,(0xa000)
+                bit     3,a             ; d3=1 for ready to write a new sound data
+                jr      z,.playloop     ; about 330us per byte
+                ld      a,(nn)          ; nn=bc, de or hl
+                ld      (0xa001),a
+                inc     nn
+                :
+                :
+                jr      .playloop
+                :
+                :
+                ld      a,#0x84
+                ld      (0xa000),a
+                call    .delayoneframe
+                ld      a,#0x80
+                ld      (0xa000),a
+                ret
+
+Recording Digital Audio
+-----------------------
+
+To record digital audio, write $82 to $A000, then poll the status register at
+$A000.  When bit 3 becomes set, a sample can be read from the data register
+at $A001.  To end recording, write $80 to $A000.
+
+Example Routine:
+
+.recloop:
+                ld      a,(0xa000)
+                bit     3,a             ; d3=1 for data ready to be read
+                jr      z,.recloop      ; about 330us per byte
+                ld      a,(0xa001)
+                ld      (nn),a          ; nn=bc, de or hl pointing to Ram buffer
+                inc     nn
+                :
+                :
+                jr      .recloop
+                :
+                :
+                ld      a,#0x80
+                ld      (0xa000),a
+                ret
+
+.trigerplay:
+	ld	de,#0x0200
+	ld	a,#0x82		; set record mode with hige voltage pulse in a while
+1$:
+	ld	(0xa000),a
+	xor	#0x20
+	ld	b,a
+	call	.delay200us
+	dec	de
+	ld	a,e
+	or	d
+;	cp	#0
+	ld	a,b
+	jp	nz,1$
+	call	.geneop		; gen Eop pulse
+	call	.delay10ms
+	ret
+
+.delay200us:
+	push	de
+	ld	de,#0x18	; for about 200us
+	jp	.delayloop
+.delay10ms:
+	push	de
+	ld	de,#0x0600	; for about 12ms
+.delayloop:
+	dec	de		; 2 mc
+	ld	a,e		; 1
+	cp	#0		; 2
+	jp	nz,.delayloop	; 3
+	ld	a,d		
+	cp	#0
+	jp	nz,.delayloop
+	pop	de
+	ret
+
+Battery Usage Information:
+
+The battery usage is dependent on the operation being performed and the
+amount of time spend in halt mode.  The following are some example current
+usages:
+
+1. displaying Hi-Color pictures with sound off mode in CGB : 70ma
+
+2. displaying Hi-Color picture with sound on mode in CGB   : 100ma--200ma
+                       
+3. displaying menu screens of Pocket Voice                 : 50ma
+
+4. recording sound on CGB                                  : 70ma
+
+5. playing a mini-game on CGB, with sound                  : 50ma 
+
+6. playing sound on DMG                                    : 80ma--160ma *
+
+7. recording sound recording on DMG                        : 60ma
+
+8. playing sound playing on GB pocket (not recommended!)   : 120ma--380ma *
+
+9. recording sound on GB pocket                            : 110ma
+
+* - Current depends on volume of sample being played.
+
+
+(Informations about writing data to Flash Rom by GB program will be launched in next release)
+

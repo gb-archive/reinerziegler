@@ -1,0 +1,280 @@
+<HTML>
+
+<HEAD>
+
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+   <META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+
+   <TITLE>NMEA</TITLE>
+
+<meta name="Microsoft Theme" content="binaer2 111, default">
+</HEAD>
+
+<BODY background="../_themes/binaer2/rain.gif" bgcolor="#0000FF" text="#000000" link="#0000FF" vlink="#0000FF" alink="#0000FF"><!--mstheme--><font face="Arial, Arial, Helvetica"><b><font color="#0000FF" size="6">NMEA 0183&nbsp;</font></b>
+
+<p><B>NMEA is a standard protocol, used by GPS receivers to transmit data.
+
+NMEA output is EIA-422A but for most purposes you can consider it is RS-232
+
+compatible. Use 4800 bps, 8 data bits, no parity and one stop bit (8N1).
+
+NMEA 0183 sentences are all ASCII. Each sentence begins with a dollarsign
+
+($) and ends with a carriage return linefeed (&lt;CR>&lt;LF>). Data is
+
+comma delimited. All commas must be included as they act as markers. Some
+
+GPS do not send some of the fields. A checksum is optionally added (in
+
+a few cases it is mandatory). Following the $ is the address field aaccc.
+
+aa is the device id. GP is used to identify GPS data. Transmission of the
+
+device ID is usually optional. ccc is the sentence formatter, otherwise
+
+known as the sentence name.</B>
+
+<BR><B>Here are the most important sentences ( for more infos read the
+
+text-file <a HREF="nmea.txt">NMEA-FAQ</a> ) :</B>&nbsp;
+<p>&nbsp;</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<font color="#0000FF"><b>
+
+RMB</b></font><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!--mstheme--></font><PRE>$GPRMB,A,x.x,a,c--c,d--d,llll.ll,e,yyyyy.yy,f,g.g,h.h,i.i,j*kk
+
+RMB&nbsp; = Recommended Minimum Navigation Information
+
+1&nbsp;&nbsp;&nbsp; = Data Status (V=navigation receiver warning)
+
+2&nbsp;&nbsp;&nbsp; = Crosstrack error in nautical miles
+
+3&nbsp;&nbsp;&nbsp; = Direction to steer (L or R) to correct error
+
+4&nbsp;&nbsp;&nbsp; = Origin waypoint ID#
+
+5&nbsp;&nbsp;&nbsp; = Destination waypoint ID#
+
+6&nbsp;&nbsp;&nbsp; = Destination waypoint latitude
+
+7&nbsp;&nbsp;&nbsp; = N or S
+
+8&nbsp;&nbsp;&nbsp; = Destination waypoint longitude
+
+9&nbsp;&nbsp;&nbsp; = E or W
+
+10&nbsp;&nbsp; = Range to destination in nautical miles
+
+11&nbsp;&nbsp; = Bearing to destination, degrees True
+
+12&nbsp;&nbsp; = Destination closing velocity in knots
+
+13&nbsp;&nbsp; = Arrival status; (A=entered or perpendicular passed)
+
+14&nbsp;&nbsp; = Checksum</PRE><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<b><font color="#0000FF">
+
+RMC</font></b><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!--mstheme--></font><PRE>$GPRMC,hhmmss.ss,A,llll.ll,a,yyyyy.yy,a,x.x,x.x,ddmmyy,x.x,a*hh
+
+RMC&nbsp; = Recommended Minimum Specific GPS/TRANSIT Data
+
+1&nbsp;&nbsp;&nbsp; = UTC of position fix
+
+2&nbsp;&nbsp;&nbsp; = Data status (V=navigation receiver warning)
+
+3&nbsp;&nbsp;&nbsp; = Latitude of fix
+
+4&nbsp;&nbsp;&nbsp; = N or S
+
+5&nbsp;&nbsp;&nbsp; = Longitude of fix
+
+6&nbsp;&nbsp;&nbsp; = E or W
+
+7&nbsp;&nbsp;&nbsp; = Speed over ground in knots
+
+8&nbsp;&nbsp;&nbsp; = Track made good in degrees True
+
+9&nbsp;&nbsp;&nbsp; = UT date
+
+10&nbsp;&nbsp; = Magnetic variation degrees (Easterly var. subtracts from true course)
+
+11&nbsp;&nbsp; = E or W
+
+12&nbsp;&nbsp; = Checksum</PRE><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<b><font color="#0000FF">
+
+GGA</font></b><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!--mstheme--></font><PRE>$GPGGA,hhmmss.ss,llll.ll,a,yyyyy.yy,a,x,xx,x.x,x.x,M,x.x,M,x.x,xxxx*hh
+
+GGA&nbsp; = Global Positioning System Fix Data
+
+1&nbsp;&nbsp;&nbsp; = UTC of Position
+
+2&nbsp;&nbsp;&nbsp; = Latitude
+
+3&nbsp;&nbsp;&nbsp; = N or S
+
+4&nbsp;&nbsp;&nbsp; = Longitude
+
+5&nbsp;&nbsp;&nbsp; = E or W
+
+6&nbsp;&nbsp;&nbsp; = GPS quality indicator (0=invalid; 1=GPS fix; 2=Diff. GPS fix)
+
+7&nbsp;&nbsp;&nbsp; = Number of satellites in use [not those in view]
+
+8&nbsp;&nbsp;&nbsp; = Horizontal dilution of position
+
+9&nbsp;&nbsp;&nbsp; = Antenna altitude above/below mean sea level (geoid)
+
+10&nbsp;&nbsp; = Meters&nbsp; (Antenna height unit)
+
+11&nbsp;&nbsp; = Geoidal separation (Diff. between WGS-84 earth ellipsoid and
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mean sea level.&nbsp; -=geoid is below WGS-84 ellipsoid)
+12&nbsp;&nbsp; = Meters&nbsp; (Units of geoidal separation)
+
+13&nbsp;&nbsp; = Age in seconds since last update from diff. reference station
+
+14&nbsp;&nbsp; = Diff. reference station ID#
+
+15&nbsp;&nbsp; = Checksum</PRE><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<b><font color="#0000FF">
+
+VTG</font></b><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!--mstheme--></font><PRE>$GPVTG,t,T,,,s.ss,N,s.ss,K*hh
+
+VTG&nbsp; = Actual track made good and speed over ground
+
+1&nbsp;&nbsp;&nbsp; = Track made good
+
+2&nbsp;&nbsp;&nbsp; = Fixed text 'T' indicates that track made good is relative to true north
+
+3&nbsp;&nbsp;&nbsp; = not used
+
+4&nbsp;&nbsp;&nbsp; = not used
+
+5&nbsp;&nbsp;&nbsp; = Speed over ground in knots
+
+6&nbsp;&nbsp;&nbsp; = Fixed text 'N' indicates that speed over ground in in knots
+
+7&nbsp;&nbsp;&nbsp; = Speed over ground in kilometers/hour
+
+8&nbsp;&nbsp;&nbsp; = Fixed text 'K' indicates that speed over ground is in kilometers/hour
+
+9&nbsp;&nbsp;&nbsp; = Checksum</PRE><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<b><font color="#0000FF">
+
+RMA</font></b><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!--mstheme--></font><PRE>$GPRMA,A,llll.ll,N,lllll.ll,W,,,ss.s,ccc,vv.v,W*hh
+
+RMA&nbsp; = Navigation data from present position
+
+1&nbsp;&nbsp;&nbsp; = Data status&nbsp;
+
+2&nbsp;&nbsp;&nbsp; = Latitude
+
+3&nbsp;&nbsp;&nbsp; = N/S
+
+4&nbsp;&nbsp;&nbsp; = longitude
+
+5&nbsp;&nbsp;&nbsp; = W/E
+
+6&nbsp;&nbsp;&nbsp; = not used
+
+7&nbsp;&nbsp;&nbsp; = not used
+
+8&nbsp;&nbsp;&nbsp; = Speed over ground in knots
+
+9&nbsp;&nbsp;&nbsp; = Course over ground
+
+10&nbsp;&nbsp; = Variation
+
+11&nbsp;&nbsp; = Direction of variation E/W
+
+12&nbsp;&nbsp; = Checksum</PRE><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<b><font color="#0000FF">
+
+GSA</font></b><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!--mstheme--></font><PRE>$GPGSA,A,3,19,28,14,18,27,22,31,39,,,,,1.7,1.0,1.3*35
+
+GSA&nbsp; = GPS receiver operating mode, SVs used for navigation, and DOP values.
+
+1&nbsp;&nbsp;&nbsp; = Mode:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; M=Manual, forced to operate in 2D or 3D
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A=Automatic, 3D/2D
+
+2&nbsp;&nbsp;&nbsp; = Mode:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1=Fix not available
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2=2D
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3=3D
+
+3-14 = IDs of SVs used in position fix (null for unused fields)
+
+15&nbsp;&nbsp; = PDOP
+
+16&nbsp;&nbsp; = HDOP
+
+17&nbsp;&nbsp; = VDOP</PRE><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<b><font color="#0000FF">
+
+GSV</font></b><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!--mstheme--></font><PRE>$GPGSV,4,1,13,02,02,213,,03,-3,000,,11,00,121,,14,13,172,05*67
+
+GSV&nbsp; = Number of SVs in view, PRN numbers, elevation, azimuth &amp; SNR values.
+
+1&nbsp;&nbsp;&nbsp; = Total number of messages of this type in this cycle
+
+2&nbsp;&nbsp;&nbsp; = Message number
+
+3&nbsp;&nbsp;&nbsp; = Total number of SVs in view
+
+4&nbsp;&nbsp;&nbsp; = SV PRN number
+
+5&nbsp;&nbsp;&nbsp; = Elevation in degrees, 90 maximum
+
+6&nbsp;&nbsp;&nbsp; = Azimuth, degrees from true north, 000 to 359
+
+7&nbsp;&nbsp;&nbsp; = SNR, 00-99 dB (null when not tracking)
+
+8-11 = Information about second SV, same as field 4-7
+
+12-15= Information about third SV, same as field 4-7
+
+16-19= Information about fourth SV, same as field 4-7<!--mstheme--></font></BODY>
+
+</HTML>
+

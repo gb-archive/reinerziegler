@@ -1,0 +1,70 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Andrew March">
+   <meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+   <title>Andrew's Game Boy pages - XCARTIO</title>
+<meta name="Microsoft Theme" content="binaer2 111, default">
+</head>
+<body background="_themes/binaer2/rain.gif" bgcolor="#0000FF" text="#000000" link="#0000FF" vlink="#0000FF" alink="#0000FF"><!--mstheme--><font face="Arial, Arial, Helvetica">
+&nbsp;<center><font color="#800080"><font size=+2 face="Comic Sans MS">XCARTIO</font>
+<br><font size=+2>FLASH
+cartridge programmer from Andrew March</font></font></center>
+
+<p>&nbsp;</p>
+
+<blockquote>To make a re-programmable cartridge for the Nintendo Gameboy,
+replace the mask ROM with a 29F040B FLASH ROM according to the instructions
+on Reiner's Gameboy page.
+<p>A programmer unit is then used to load software into the modified cartridge.
+This page provides plans and PCB artwork for XCARTIO, a single chip programmer
+unit built around a Xilinx XC9572-15 PC84 EPLD on a single-sided PCB.
+<p>XCARTIO is controlled by Reiner's ReadPlus software running on a DOS/Windows
+PC equipped with a plain-vanilla parallel port (use the readepld.exe executable).
+<br>&nbsp;
+<p><img SRC="xc100t_1.jpg" width="278" height="291">
+<p><i>Component side view.</i>
+<br><i>The cartridge connector at the top of the board was salvaged from
+a broken Game Boy.</i>
+<br><i>The 26-way header at the bottom of the PCB connects to your PC's
+parallel port.</i>
+<br>&nbsp;
+<br>&nbsp;
+<p><img SRC="xc100b_1.jpg" width="298" height="315">
+<p><i>Solder side view.</i>
+<br><i>The EPLD is programmed AFTER soldering to the PCB.</i>
+<br>&nbsp;
+<p>Full plans are contained in the <b><a href="download/xc112.zip">XCARTIO zip file
+(version 1.12)</a></b> which includes a schematic, PCB artwork and a JEDEC
+programming file for the EPLD.
+<p>The EPLD logic is based on Reiner Ziegler's Altera implementation of
+the CARTIO cartridge programmer by Pascal Felber.</blockquote>
+
+<blockquote>To program the Xilinx EPLDs used in my project you'll need
+a device programmer such as the one pictured below. It's a fairly simple
+affair thanks to the in-system programming feature of the XC9500 family
+devices. It interfaces the EPLD's JTAG port to the parallel port of a PC
+running Windows 95.
+<p>The EPLD is programmed AFTER soldering to the PCB. Apply external power,
+connect the JTAG download cable between your PC's parallel port and the
+header pins above the voltage regulator, then run the EZTag software to
+download the JEDEC device programming file.
+<p>The companion <b><a href="ftp://ftp.xilinx.com/pub/swhelp/cpld/eztag_pc.zip">EZTag
+software</a></b> is a DOS executable with Windows GUI and can be obtained
+from the FTP file area of the <b><u><font color="#3333FF"><a href="http://www.xilinx.com">Xilinx
+web-site</a></font></u></b>. You can also download the Xilinx PLD programmer software from
+<a href="http://www.xilinx.com/sxpresso/webpack.htm">here</a>.<br>
+<p>Unfortunately, Xilinx left out the PCB details so I designed my own
+artwork and called it <b><u><font color="#3333FF"><a href="download/ez100.zip">EZTagPCB</a></font></u></b>.
+You may also wish to check out the <b><u><font color="#3333FF"><a href="jtag_pdc.pdf">original
+Xilinx schematic</a></font></u></b>.
+<br>&nbsp;
+<br>
+<center>
+<p><img SRC="ez_top2.jpg" BORDER=2 height=335 width=432></center>
+
+</blockquote>
+
+<!--mstheme--></font></body>
+</html>

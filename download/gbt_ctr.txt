@@ -1,0 +1,74 @@
+gbt transfer protocol
+
+
+DB25  pin name
+p2~p9 pd[7:0]  XXXXXXXXXXX  ai  XXXXX  data  XXXX
+p1    nwrite   ~~~~~~~~~|_____________________|~~
+p14   ndstb    ~~~~~~~~~~~~~~~~~~~~~~~~~|_|~~~~~~
+p17   nastb    ~~~~~~~~~~~~~|_|~~~~~~~~~~~~~~~~~~
+
+
+ai[]=0	r/w a[7..0]
+ai[]=1	r/w a[15..8]
+ai[]=2	r/w control d7=rst,d6=spp,d5=xck,d1=en_xwe,d0=en_inc
+ai[]=3	r/w data 
+*remark 
+	rst : cartridge rst pin
+	spp : 0=EPP mode, 1=SPP mode
+	xck : cartridge ck pin
+	en_xwe : 1=enable flash rom write, 0=disable
+	en_inc : 1=enable page adr inc. 0=disable
+
+
+
+eg:power up reset,epp,dis. en_xwe, dis. adr inc
+
+DB25  pin name
+p2~p9 pd[7:0]  XXXXXXXXXXX 02 XX 00 XXXX 02 XX 80 XXXXXXXXXXXX
+p1    nwrite   ~~~~~~~~~|_____________________________|~~~~~~~
+p14   ndstb    ~~~~~~~~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~~~
+p17   nastb    ~~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~~~~~~~~~
+                            reset=0       reset=1  
+
+
+
+eg:write adr $1234, data $a5
+
+DB25  pin name
+p2~p9 pd[7:0]  XXXXXXXXXXX 00 XX 34 XXXX 01 XX 12 XXXX 03 XX a5 XXXXXXXXXX
+p1    nwrite   ~~~~~~~~~|_________________________________________|~~~~~~~
+p14   ndstb    ~~~~~~~~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~
+p17   nastb    ~~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~~~~~~~
+                        set adr low    set adr high       set data  
+
+
+
+eg:write adr $a000~$a0ff, 256 data
+
+DB25  pin name
+p2~p9 pd[7:0]  XXXXXXXXXXX 00 XX 00 XXXX 01 XX a0 XXXX 02 XX 81 XXXX 03 XX data0 XX data1 XX ... XX data255 XXXXXXXXX
+p1    nwrite   ~~~~~~~~~|____________________________________________________________________________________|~~~~~~~
+p14   ndstb    ~~~~~~~~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~~~|_|~~~~~~|_|~~~~ ... ~~~~~|_|~~~~~~~~~~~~
+p17   nastb    ~~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                        set adr low    set adr high    enable inc.         data0    data1    ...    data255
+
+
+
+eg:read adr $0000~$00ff, 256 data
+
+DB25  pin name
+p2~p9 pd[7:0]  XXXXXXXXXXX 00 XX 00 XXXX 01 XX 00 XXXX 02 XX 81 XXXX 03 XX data0 XX data1 XX ... XX data255 XXXXXXXXX
+p1    nwrite   ~~~~~~~~~|________________________________________________|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+p14   ndstb    ~~~~~~~~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~~~|_|~~~~~~|_|~~~~ ... ~~~~~|_|~~~~~~~~~~~~
+p17   nastb    ~~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                        set adr low    set adr high    enable inc.         data0    data1    ...    data255
+
+
+eg:write flash adr $0000~$00ff, 256 data
+
+DB25  pin name
+p2~p9 pd[7:0]  XXXXXXXXXXX 00 XX 00 XXXX 01 XX 00 XXXX 02 XX 83 XXXX 03 XX data0 XX data1 XX ... XX data255 XXXXXXXXX
+p1    nwrite   ~~~~~~~~~|__________________________________________________________________________________|~~~~~~~~~
+p14   ndstb    ~~~~~~~~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~~~|_|~~~~~~|_|~~~~ ... ~~~~~|_|~~~~~~~~~~~~
+p17   nastb    ~~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~~|_|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                        set adr low    set adr high    enable xwe&inc.         data0    data1    ...    data255

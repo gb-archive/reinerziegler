@@ -1,0 +1,126 @@
+Modification of a Bung GB Doctor Card 16Mbit to 64Mbit
+======================================================
+
+Carefully open the card. It is not easy, because the battery blocks the cap. Try to force 
+a thin piece of plasitc (or your finger nail) between the two pieces of the case.
+After successfully open it, it is recommended to cut a piece of plastic out of the cap 
+(see picture), opposite to the battery. So that it will open easier the next time.
+Check if you have the right hardware: big 'V2' sign on the lower right, above that the 
+16M Flash from Macronix and left of that the Bung ASIC GBX-01.
+Now remove the 16M Flash, it is replaced with a Intel 28F640J5, 64Mbit device. Do not take 
+another device, because the programming software recognise this type. It is the best to use 
+a special "hot air" SMD remove solder iron. If ou do not have access to one, bend every 
+single pin carefully up (with help of a needle) by heating it. Be careful and do not lift 
+the pads !
+The 16M datasheet could be found here: www.macronix.com
+The Flash datasheet could be found here:
+http://developer.intel.com/design/flcomp/datashts/290606.htm
+
+As far as I know, there is only this Flash out there with this pinning, you
+can NOT use another ! Beside this, FLASH ID will differ and the progrmming
+software will not recognise the other device !
+DO NOT TAKE THE TSSOP DEVICE, YOU WILL NOT BE ABLE TO SOLDER THE THIN PINS !
+
+This article describes the replacemet of the macronix 29F1610 Flash device with a Intel 28F640J5
+Flash device. If there is an other Flash device in the 16M card, the replacement may also work, 
+but you have to figure out the connections yourself.
+The technique to do the wireing is the same used for the MBC5 card.
+Connect a 0.2 mm copper wire to every pad and lead them to the upper or lower side for about 3 cm.
+Refer to picture ?, the datasheets and the table (GB connector points to you, battery and RAM is 
+on the upper side. 
+Macronix use the 16bit way to name the address lines, do not be desturbed that there is always a
+difference of one (GB A(1) <-> MX A(0)).
+You have to be very experienced in soldering, because some copper wires have to be fixed to the 
+Bung ASIC pins ! Be attentive to put no solder tin across two pins !
+
+MX    Intel
+Flash Flash wire   function   connect
+Pin   Pin    to    for GB       to
+  1    22   down     WE# 
+  2    10   down     A19
+  3    11   down     A18 
+  4    43   up       A8
+  5    45   up       A7 
+  6    46   up       A6 
+  7    47   up       A5 
+  8    48   up       A4 
+  9    49   up       A3 
+ 10    50   up       A2
+ 11    51   up       A1 
+ 12     1   down     CE# 
+ 13     7   down     GND (CE1 of 28F640) 
+ 14    21   down     OE# 
+ 15    38   up       D0 
+ 16                  not used 
+ 17    40   up       D1 
+ 18                  not used
+ 19    33   up       D2
+ 20                  not used
+ 21    31   up       D3
+ 22                  not used 
+ 23    28   down     VCC (VCCQ of 28F640)
+ 24    27   down     D4
+ 25                  not used
+ 26    25   down     D5
+ 27                  not used
+ 28    16   down     D6
+ 29                  not used
+ 30    18   down     D7
+ 31    37   up       A0
+ 32    44   up       GND
+ 33    36   up       Byte#
+ 34    12   down     A17
+ 35    13   down     A16
+ 36     5   down     A15
+ 37     4   down     A14
+ 38     3   down     A13
+ 39     2   down     A12
+ 40    54   up       A11
+ 41    53   up       A10
+ 42    52   up       A9
+ 43     9   down     A20
+ 44         right    VCC (see text)
+------------------------------------------------
+       7             CE1        GND
+      34             CE2        GND
+      56             VPEN       VCC, see text
+      29             GND        GND, see text
+      44             GND        GND
+      14             VCC        VCC
+       6             A22        Bung ASIC pin 49
+       8             A21        Bung ASIC pin 48
+      20             STS        Bung ASIC pin 5
+      55             RP#        Reset#,Bung ASIC pin 39
+                                or cartridge pin 30
+
+      15                        not used
+      17                        not used
+      19                        not used
+      23                        not used
+      24                        not used
+      26                        not used
+      30                        not used
+      32                        not used
+      35                        not used
+      39                        not used
+      41                        not used
+      42                        not used
+------------------------------------------------
+Pin 62 of the Bung GBX-01 should be connected to GND. Cut this connection carefully with a sharp
+knife. Connect pin 61 with a 0.2 mm copper wire (see above) to GND.
+
+Put adhensive textil tape with the size of the MX Flash above the wires, so that the pads are 
+covered from it. Bend all pins of the Flash straight, see picture ? 2..
+Take some thicker wire (e.g. from resistor) and solder one to pad 44  pionting to right and 
+another one to pin 16 of the RAM pointing down (refer to picture). These are used as a base 
+to fix the device. Cut them carefully and do not lift the pads. Solder them to pin 56 and 29 of 
+the Flash. Now connect all wires to the appropriate signal. Use a ohm meter to find the right 
+one, keep the lines short. Below the dashed line are additional connestions that have to be made 
+to the Flash. Try to keep the VCC/GND (14, 28, 44) lines as short as possible.
+Pin 62 of the Bung GBX-01 should be connected to GND. Cut this connection carefully with a sharp 
+knife. Connect pin 61 with a 0.2 mm copper wire (see above) to GND.
+Check if there are 5 new connestions to the ASIC.
+Thats it, now our cartridge must look like this one on the picture ......and should work !
+Your most preferred Flashprogram should recognise it as a 64M card.
+
+

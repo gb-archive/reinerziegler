@@ -1,0 +1,158 @@
+<html>
+
+<head>
+<title>32Mbit</title>
+
+
+<meta name="Microsoft Theme" content="binaer2 111">
+<meta name="Microsoft Border" content="none">
+</head>
+
+<body background="_themes/binaer2/rain.gif" bgcolor="#0000FF" text="#000000" link="#0000FF" vlink="#0000FF" alink="#0000FF"><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p><br>
+<font color="#FFFF00"><u><strong>Building a 32mbit flash cart</strong></u></font><br>
+<br>
+Here's the wiring diagram for putting a AMD AM29F032B 32mbit flash ROM into a GameBoy
+Color cart. You can get a AM29F032B-xxEx (x = don't care) from <a href="http://www.marshall.com">http://www.marshall.com</a> for about
+US$15 + shipping.<br>
+<br>
+I recommend using a Zelda DX cart as it is one of the few non-Japanese carts that contains
+32k bytes of cart RAM.<br>
+<br>
+Game &amp; Watch Gallery 2 can be used but only has 8k bytes of cart RAM.<br>
+<br>
+To program the finished cart you need ReadPlus V3.25 or later.<br>
+</p>
+<div align="left">
+
+<!--mstheme--></font><table border="1" width="77%" bordercolordark="#666666" bordercolorlight="#CCCCCC">
+  <tr>
+    <td width="40%"><!--mstheme--><font face="Arial, Arial, Helvetica">Finished 32mbit cart<!--mstheme--></font></td>
+    <td width="60%"><!--mstheme--><font face="Arial, Arial, Helvetica"><a href="32mbit.jpg">http://home.hiwaay.net/~jfrohwei/gameboy/32mbit.jpg</a><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="40%"><!--mstheme--><font face="Arial, Arial, Helvetica">MBC5 Pinouts<!--mstheme--></font></td>
+    <td width="60%"><!--mstheme--><font face="Arial, Arial, Helvetica"><a href="mbc5.gif">http://home.hiwaay.net/~jfrohwei/gameboy/mbc5.gif</a><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="40%"><!--mstheme--><font face="Arial, Arial, Helvetica">23C16120 Pinouts<!--mstheme--></font></td>
+    <td width="60%"><!--mstheme--><font face="Arial, Arial, Helvetica"><a href="23c64000.gif">http://home.hiwaay.net/~jfrohwei/gameboy/23c64000.gif</a><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="40%"><!--mstheme--><font face="Arial, Arial, Helvetica">LH538 Pinouts<!--mstheme--></font></td>
+    <td width="60%"><!--mstheme--><font face="Arial, Arial, Helvetica"><a href="lh538.gif">http://home.hiwaay.net/~jfrohwei/gameboy/lh534.gif</a><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="40%"><!--mstheme--><font face="Arial, Arial, Helvetica">Published GBC carts<!--mstheme--></font></td>
+    <td width="60%"><!--mstheme--><font face="Arial, Arial, Helvetica"><a href="http://home.hiwaay.net/~jfrohwei/gameboy/gbcmbc.txt">http://home.hiwaay/net/~jfrohwei/gameboy/gbcmbc.txt</a><!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Arial, Arial, Helvetica">
+</div>
+
+<p>&nbsp;</p>
+<div align="left">
+
+<!--mstheme--></font><table border="1" width="76%" bordercolordark="#666666" bordercolorlight="#CCCCCC">
+  <tr>
+    <td width="50%"><!--mstheme--><font face="Arial, Arial, Helvetica"><strong>Zelda DX for GBC</strong><!--mstheme--></font></td>
+    <td width="50%"><!--mstheme--><font face="Arial, Arial, Helvetica"><strong>Game &amp; Watch Gallery 2 for GBC</strong><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="50%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font face="Arial">AM29F032B-xxEx (x = don't care)<br>
+    |<br>
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SEC KM23C16120 ROM <br>
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
+    <br>
+    Pin&nbsp;&nbsp;&nbsp; Pin<br>
+    1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2<br>
+    2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3<br>
+    3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 34<br>
+    4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 35<br>
+    5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 36<br>
+    6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 37<br>
+    7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 38<br>
+    8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 39<br>
+    9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12<br>
+    10&nbsp;&nbsp;&nbsp;&nbsp; 23<br>
+    12&nbsp;&nbsp;&nbsp;&nbsp; Cart Pin 30<br>
+    13&nbsp;&nbsp;&nbsp;&nbsp; 40<br>
+    14&nbsp;&nbsp;&nbsp;&nbsp; 41<br>
+    15&nbsp;&nbsp; &nbsp; 42<br>
+    16&nbsp;&nbsp; &nbsp; 4<br>
+    17&nbsp;&nbsp;&nbsp;&nbsp; 5<br>
+    18&nbsp;&nbsp;&nbsp;&nbsp; 6<br>
+    19&nbsp;&nbsp;&nbsp;&nbsp; 7<br>
+    20&nbsp;&nbsp;&nbsp;&nbsp; 8<br>
+    21&nbsp;&nbsp; &nbsp; 9<br>
+    22&nbsp;&nbsp;&nbsp; 10<br>
+    23&nbsp;&nbsp;&nbsp; 11<br>
+    24&nbsp;&nbsp;&nbsp; 31<br>
+    25&nbsp;&nbsp;&nbsp; 15<br>
+    26&nbsp;&nbsp;&nbsp; 17<br>
+    27&nbsp;&nbsp;&nbsp; 19<br>
+    28&nbsp;&nbsp;&nbsp; 21<br>
+    29&nbsp;&nbsp;&nbsp; 13<br>
+    30&nbsp;&nbsp;&nbsp; 32<br>
+    31&nbsp;&nbsp;&nbsp; 23<br>
+    32&nbsp;&nbsp;&nbsp; 24<br>
+    33&nbsp;&nbsp;&nbsp; 26<br>
+    34&nbsp;&nbsp;&nbsp; 28<br>
+    35&nbsp;&nbsp;&nbsp; 30<br>
+    37&nbsp;&nbsp;&nbsp; 14<br>
+    38&nbsp;&nbsp;&nbsp; Cart pin 3<br>
+    39&nbsp;&nbsp;&nbsp; 44<br>
+    40&nbsp;&nbsp;&nbsp; 43</font><!--mstheme--></font></td>
+    <td width="50%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font face="Arial">AM29F032B-xxEx (x = don't care)<br>
+    |<br>
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LH538 ROM <br>
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; |<br>
+    <br>
+    Pin&nbsp;&nbsp;&nbsp; Pin<br>
+    1&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 1<br>
+    2&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 31<br>
+    3&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 30<br>
+    4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2<br>
+    5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3<br>
+    6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 29<br>
+    7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 28<br>
+    8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4<br>
+    9&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 22<br>
+    10&nbsp;&nbsp; &nbsp; 32<br>
+    12&nbsp;&nbsp; &nbsp; Cart Pin 30<br>
+    13&nbsp;&nbsp; &nbsp; 25<br>
+    14&nbsp; &nbsp;&nbsp; 23<br>
+    15&nbsp;&nbsp;&nbsp;&nbsp; 26<br>
+    16&nbsp;&nbsp;&nbsp;&nbsp; 27<br>
+    17&nbsp;&nbsp;&nbsp;&nbsp; 5<br>
+    18&nbsp;&nbsp; &nbsp; 6<br>
+    19&nbsp;&nbsp; &nbsp; 7<br>
+    20&nbsp;&nbsp; &nbsp; 8<br>
+    21&nbsp;&nbsp; &nbsp; 9<br>
+    22&nbsp;&nbsp;&nbsp; 10<br>
+    23&nbsp;&nbsp;&nbsp; 11<br>
+    24&nbsp;&nbsp;&nbsp; 12<br>
+    25&nbsp;&nbsp;&nbsp; 13<br>
+    26&nbsp;&nbsp;&nbsp; 14<br>
+    27&nbsp;&nbsp;&nbsp; 15<br>
+    28&nbsp;&nbsp;&nbsp; 17<br>
+    29&nbsp;&nbsp;&nbsp; 16<br>
+    30&nbsp;&nbsp;&nbsp; 16<br>
+    31&nbsp;&nbsp;&nbsp; 32<br>
+    32&nbsp;&nbsp;&nbsp; 18<br>
+    33&nbsp;&nbsp;&nbsp; 19<br>
+    34&nbsp;&nbsp;&nbsp; 20<br>
+    35&nbsp;&nbsp;&nbsp; 21<br>
+    37&nbsp;&nbsp;&nbsp; 24<br>
+    38&nbsp;&nbsp;&nbsp; Cart pin 3<br>
+    39&nbsp;&nbsp;&nbsp; MBC5-RA21<br>
+    40&nbsp;&nbsp;&nbsp; MBC5-RA20</font><!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Arial, Arial, Helvetica">
+</div>
+
+<p><br>
+<br>
+</p>
+<!--mstheme--></font></body>
+</html>

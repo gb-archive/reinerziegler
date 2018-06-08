@@ -1,0 +1,276 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=FrontPage.Editor.Document>
+<meta name=Generator content="Microsoft FrontPage 4.0">
+<meta name=Originator content="Microsoft Word 9">
+<title>General description:</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Reiner Ziegler</o:Author>
+  <o:LastAuthor>Ziegler Reiner</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:Created>2000-06-16T16:07:00Z</o:Created>
+  <o:LastSaved>2000-06-16T16:07:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>380</o:Words>
+  <o:Characters>2166</o:Characters>
+  <o:Company>Reiner Ziegler</o:Company>
+  <o:Lines>18</o:Lines>
+  <o:Paragraphs>4</o:Paragraphs>
+  <o:CharactersWithSpaces>2660</o:CharactersWithSpaces>
+  <o:Version>9.2812</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:HyphenationZone>21</w:HyphenationZone>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+  </w:Compatibility>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 70.85pt 2.0cm 70.85pt;
+	mso-header-margin:36.0pt;
+	mso-footer-margin:36.0pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=DE link=#0000FF vlink=#800080 style='tab-interval:35.4pt' background="sky.jpg">
+
+<div class=Section1 style="width: 674; height: 922">
+
+<p class=MsoNormal><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'><![if !supportEmptyParas]>&nbsp;</span></p>
+
+<table border="2" width="100%">
+  <tr>
+    <td width="100%" colspan="5">
+      <p class="MsoNormal"><b><font face="Arial Black" size="4"><span style="background-color: #FF0000">GBTS
+      Hardware description from Reiner Ziegler</span></font></b></td>
+  </tr>
+  <tr>
+    <td width="26%"><span
+style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'><b style='mso-bidi-font-weight:normal'>General</b><b style='mso-bidi-font-weight: normal; font-family: Arial; mso-bidi-font-family: Times New Roman'>
+      </b><b style='mso-bidi-font-weight:normal'>description:<span style='mso-tab-count:1'>&nbsp;&nbsp; </span></b></span></td>
+    <td width="74%" colspan="4">
+      <p class="MsoNormal">
+      <span style='font-family:Arial;mso-bidi-font-family:
+"Times New Roman"'>The whole design is based on saving chips and connection
+      efford. The Latch HC175 is used for storing the status and select lines
+      for the UART. The free bit D3 is used for bankswitching of the flash chip.
+      The clock pin should be selected in case of write to address A000hex.
+      Means CS-U3 and WR is low. So I used CS-U3 for enabling (1G) of the 244
+      and after WR is going low the clock line will also go low. If only CS-U3
+      is going low the output of 1Y1(Clock) is tristated. I used a pullup
+      resistor in order to avoid undefined states. Same procedure for read. With
+      CS-U3 and RD low you can read the DataOut, ShutDown, second bank flash and
+      IRQ status bits. If only CS-U3 is low, the pullup resistor at 1Y2 will
+      force a high state at the second half of 244 (2G) and all outputs are
+      tristated. So I used the 244 as a tristate output buffer and also for the
+      chip select logic :-)</span></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="26%"><b style='mso-bidi-font-weight:normal'><span
+style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>Used hardware
+addresses: </span></b><span
+style="mso-spacerun: yes">&nbsp; </span></td>
+    <td width="74%" colspan="4"><p class=MsoNormal><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'><i><b>Read
+      <o:p>from 0xA000</b></i></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>D0
+= DataOut from MAX3100 (UART)<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>D1
+= Shutdown signal from UART&nbsp;<span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>(active low)<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>D3
+= status second bank of flash chip&nbsp;<span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span>(active high)<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>D7
+= Interrupt ReQuest line from UART&nbsp;&nbsp;&nbsp; (active low)<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'><i><b>Write
+to 0xA000</b></i><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>D0
+= chip select UART&nbsp; <span style='mso-tab-count:2'>              </span><span
+style='mso-tab-count:1'>            </span>(active high)<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>D1
+= Serial clock UART<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>D2
+= DataIN UART<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>D3
+= select second bank flash chip&nbsp;<span style='mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>(active high)</span></p>
+
+    </td>
+  </tr>
+  <tr>
+    <td width="26%"><b style='mso-bidi-font-weight:normal'><span
+style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>Powertable:<span
+style='mso-tab-count:1'>&nbsp; </span></span></b></td>
+    <td width="17%" align="center">
+      <p class="MsoNormal"><span style='font-family:Arial;
+mso-bidi-font-family:"Times New Roman"'><b><u>AM29F010</u></b></span></td>
+    <td width="18%" align="center">
+      <p class="MsoNormal"><span style='font-family:Arial;
+mso-bidi-font-family:"Times New Roman"'><b><u>MAX3100</u></b></span></td>
+    <td width="18%" align="center">
+      <p class="MsoNormal"><span style='font-family:Arial;
+mso-bidi-font-family:"Times New Roman"'><b><u>MAX3223</u></b></span></td>
+    <td width="21%" align="center">
+      <p class="MsoNormal"><span style='font-family:Arial;
+mso-bidi-font-family:"Times New Roman"'><u><b>logic (2 HC chips)</b></u></span></td>
+  </tr>
+  <tr>
+    <td width="26%">
+      <p class="MsoNormal"><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>Normal
+operating mode</span></td>
+    <td width="17%" valign="middle" align="center">
+      <p class="MsoNormal"><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>30mA</span></td>
+    <td width="18%" valign="middle" align="center">
+      <p class="MsoNormal"><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>1mA</span></td>
+    <td width="18%" valign="middle" align="center">
+      <p class="MsoNormal"><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>1mA<span
+style='mso-tab-count:1'> </span></span></td>
+    <td width="21%" valign="middle" align="center">
+      <p class="MsoNormal"><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'><span style='mso-tab-count:1'>&nbsp;</span>T.B.D.</span></td>
+  </tr>
+  <tr>
+    <td width="26%">
+      <p class="MsoNormal"><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>Programming
+mode</span></td>
+    <td width="17%" valign="middle" align="center">
+      <p class="MsoNormal"><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>50mA</span></td>
+    <td width="18%" valign="middle" align="center">
+      <p class="MsoNormal"><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>1mA</span></td>
+    <td width="18%" valign="middle" align="center">
+      <p class="MsoNormal"><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>1mA</span></td>
+    <td width="21%" valign="middle" align="center">
+      <p class="MsoNormal"><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'><span style='mso-tab-count:1'>&nbsp;</span>T.B.D.</span></td>
+  </tr>
+  <tr>
+    <td width="26%">
+      <p class="MsoNormal"><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>Without
+external cable</span></td>
+    <td width="17%" valign="middle" align="center">
+      <p class="MsoNormal"><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>30mA</span></td>
+    <td width="18%" valign="middle" align="center">
+      <p class="MsoNormal"><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>1uA</span></td>
+    <td width="18%" valign="middle" align="center">
+      <p class="MsoNormal"><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>1uA</span></td>
+    <td width="21%" valign="middle" align="center">
+      <p class="MsoNormal"><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'><span style='mso-tab-count:1'>&nbsp;</span>T.B.D.</span></td>
+  </tr>
+  <tr>
+    <td width="26%"><b
+style='mso-bidi-font-weight:normal'><span style='font-family:Arial;mso-bidi-font-family:
+"Times New Roman"'>Special GBTS features:<span style='mso-tab-count:1'>&nbsp;
+</span></span></b></td>
+    <td width="74%" colspan="4">
+      <p class="MsoNormal"><span
+style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>When the
+      MAX3223 sense no valid signal levels on all receiver inputs for 30us, the
+      internal power supply and drivers for MAX3223 and MAX3100 are shut off,
+      reducing supply current to 2uA for both chips. This occurs if the RS232
+      cable is disconnected or the connected peripheral transmitters are turned
+      off. The system turns on again when a valid level is applied to any RS232
+      receiver input. As a result, the system saves power without changes to the
+      existing GBTS software.&nbsp;</span></td>
+  </tr>
+  <tr>
+    <td width="26%"><b
+style='mso-bidi-font-weight:normal'><span style='font-family:Arial;mso-bidi-font-family:
+"Times New Roman"'>Future extensions:</span></b></td>
+    <td width="74%" colspan="4" style="text-align: left">
+      <p class="MsoNormal"><span style="font-family: Arial; mso-bidi-font-family: Times New Roman">A
+      Philips low power CPLD or similar programmable logic device could be used
+      to build a special MBCx. With this own bankswitching logic it's possible
+      to use all banks of the 128KByte flashrom. The bankswitching address
+      should be different from the standard MBC. Address 0x6000 should be fine.
+      This will avoid problems coming from the flashchip programming sequence.
+      The momentary sequence will use bank 0 and bank 1 for accessing the
+      device. Newer (revision B) and larger chips won't have this problem.</span></p>
+      <p class="MsoNormal">&nbsp;</p>
+      <p class="MsoNormal"><span style="font-family: Arial; mso-bidi-font-family: Times New Roman">The
+      MAX3100's IrDA mode can be used to communicate with other IrDA 1.1
+      SIR-compatible devices. In this case the MAX3223 should be replaced with
+      an infrared driver and receiver module.</span></td>
+  </tr>
+  <tr>
+    <td width="26%"><b
+style='mso-bidi-font-weight:normal'><span style='font-family:Arial;mso-bidi-font-family:
+"Times New Roman"'>Cable to PC or WS:<span style='mso-tab-count:1'>&nbsp;</span></span></b></td>
+    <td width="74%" colspan="4">
+      <p class="MsoNormal"><span style="font-family: Arial; mso-bidi-font-family: Times New Roman">The
+      GBTS RS232 connector has the same pinning like a standard PC. A null-modem
+      cable must be used to communicate with external hardware.</span></td>
+  </tr>
+  <tr>
+    <td width="26%"><b style='mso-bidi-font-weight:normal'><span
+style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>Links to used
+chips:</span></b><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'>
+      </span></td>
+    <td width="74%" colspan="4"><p class=MsoNormal><span style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'><a href="http://209.1.238.250/arpdf/1731.pdf">MAX3100CEE
+      (UART chip)</a><span style="mso-tab-count: 2"> </span></span></p>
+
+      <p class=MsoNormal><span
+style='font-family:Arial;mso-bidi-font-family:"Times New Roman"'><a href="http://209.1.238.250/arpdf/1069.pdf">MAX3223CAP
+      (Converter RS232/TTL)<span style="mso-tab-count: 1"> </span></a></span></p>
+
+      <p class=MsoNormal><span style='font-family:Arial;
+mso-bidi-font-family:"Times New Roman"'><a href="http://www.amd.com/products/nvd/techdocs/22181.pdf">AM29F010-70JC
+      (Flashchip from AMD)</a> </span></p>
+
+    </td>
+  </tr>
+</table>
+
+</div>
+
+</body>
+
+</html>

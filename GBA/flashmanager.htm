@@ -1,0 +1,58 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>FA 64M</title>
+<meta name="Microsoft Theme" content="binaer2 111, default">
+</head>
+
+<body background="../_themes/binaer2/rain.gif" bgcolor="#0000FF" text="#000000" link="#0000FF" vlink="#0000FF" alink="#0000FF"><!--mstheme--><font face="Arial, Arial, Helvetica">
+<p class="MsoNormal"><b><font size="4" color="#FFFFFF"><span style="background-color: #0000FF">Making
+your own flash cartridge programming USB hardware !</span></font></b></p>
+<p class="MsoNormal">First, you will need an USB board with AN2131SC or QC chip
+on it.&nbsp;</p>
+<!--mstheme--></font><table border="1" width="27%" bordercolordark="#666666" bordercolorlight="#CCCCCC">
+  <tr>
+    <td width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><a href="http://www.devasys.com/usbi2cio.htm"><img border="0" src="devasys.jpg" width="117" height="66"><img border="0" src="I2CIOB1.JPG" width="169" height="110"></a><!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<p class="MsoNormal">You can use this or any other hardware, but DevaSys is also
+perfect for other great USB projects :-). After that you have to add the GBA
+interface cable to the USB board. You can use half of an original Nintendo GBA
+Linkcable for the 6 pin connector. The pinning on GBA side is shown here ...</p>
+<p class="MsoNormal"><img border="0" src="ULA/connector_gba.gif" width="141" height="90"> only pin
+2(SOut), 3(SIn), 4(SD), 5(SClock) and 6(Gnd) are used.</p>
+<p class="MsoNormal">The GBA cable is connected this way.</p>
+<p class="MsoNormal"><img border="0" src="ULA/ULA-Schematics.png" width="674" height="414"></p>
+<p class="MsoNormal">After doing the hardware part (please disable the eeprom on
+the USB card), you will need to install the software. Remove all similar USB
+drivers like EZ Writer or Flash2Advance USB-Linker first. They also use similar
+hardware without using the eeprom.&nbsp;</p>
+<p class="MsoNormal">You can add a few LED's to your design and connect them to
+the ports PA4 and PA5.</p>
+<p class="MsoNormal"><b><font size="2">PA4: Read from GBA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+PA5: Write to GBA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Both: Multibooting</font></b></p>
+<p class="MsoNormal"><a href="ULA/led1.png"><img border="0" src="ULA/led1.png" width="636" height="359"></a></p>
+<p class="MsoNormal">I made a <a href="ULA/devasys.zip">special INF file</a> for
+the DevaSys hardware, but it's just text inside the INF file. You can change it
+or use it with any other AN2131 USB hardware. After the installation you will
+see the following text inside your USB devices hardware list: <b>DeVaSys I2CIO Rev: B</b></p>
+<p class="MsoNormal">After starting the <a href="http://mootan.hg.to/fmgba/">FlashManager</a>
+programming software from Mootan, you will see the following text inside your
+USB devices hardware list: <b>FlashManager ULA Hardware</b></p>
+<p class="MsoNormal"><span lang="EN-US">Connect the USB-board to the USB port on
+your PC, put your flash cartridge in the GBA slot and connect the GBA with the
+USB programmer. Now run the FlashManager software and <b>hold down Start+Select
+while turning on the GBA or during you can see the Nintendo logo.</b></span></p>
+<p class="MsoNormal"><b>Now your are ready for programming and don't forget to
+pay for the software. It's shareware and 20$ is nothing for such a great
+programming software !</b></p>
+<p class="MsoNormal"><span lang="EN-US"><a href="http://mootan.hg.to/ula/">Here </a>is
+the link to the original page (japanese only) </span></p>
+<p class="MsoNormal"><span lang="EN-US">Thank's to TeamKnox and Mootan for the
+great hardware and software !</span></p>
+<!--mstheme--></font></body>
+
+</html>

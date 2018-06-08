@@ -1,0 +1,116 @@
+The flash carts sold by Bung
+on power up appear like an MBC5 cart except that
+writing $00 to the bank select register selects rom
+bank 1 instead of rom bank 0. Writing values to
+3000-3FFF area does nothing in 4 and 16 MBit carts.
+
+Writing values (XXXXXXXS - X = Don't care, S = Select)
+to 6000-7FFF area selects MBC1 16/8 mode if S=0
+except that writes to 3000-3FFF area still do nothing
+in 4 and 16MBit carts.
+If S=1 then MBC5 mode is selected. (S=1 by default
+on power up.)
+
+Cart locations A000 & A100 act as special
+write only hardware control registers if a
+value of $c0 is written to 0000-1FFF area.
+These hardware control registers are used
+for setting up cart hardware for different
+games when the Bung cart is used as a Multicart
+for holding several different games.
+
+
+Here is a part of the Bung Multicart Menu
+code and this seems to be where control is given
+from the menu to one of the various games in the
+cart. This routine is copied to RAM & executed
+in RAM while cart bank reconfiguration is taking
+place.
+Four parameters are passed in C001,C002,C003,C004
+that define hardware parameters for the selected
+game.
+
+; c000 = Cart RAM($80)/No Cart RAM($00)
+; c001 = ROM Usage (0=32k,1=65k,3=128k,7=256k,f=512k,1f=1M,3f=2M)
+; c002/hi nibble = RAM Usage (0=8k,3=32k)
+; c002/lo nibble = RAM bank 0 offset in SRAM (8k byte increments)
+; c003 = ROM bank 0 offset in Flash (32k byte increments)
+;        (Menu uses 0 so must be 1 or greater.)
+
+l0bda:  di                      ; 0bda f3   s
+        ld      a,0             ; 0bdb 3e 00   >.
+        ldh     (0ffh),a        ; 0bdd e0 ff   `.
+        ld      a,0ah           ; 0bdf 3e 0a   >.
+        ld      (l0000),a       ; 0be1 ea 00 00   j..
+
+; Switch to cart bank reconfigure mode
+
+        ld      a,0c0h          ; 0be4 3e c0   >@
+        ld      (l0000),a       ; 0be6 ea 00 00   j..
+
+        ld      a,0a1h          ; 0be9 3e a1   >!
+        ld      (0a000h),a      ; 0beb ea 00 a0   j.
+
+        ld      a,(0c001h)      ; 0bee fa 01 c0   z.@
+        ld      (0a100h),a      ; 0bf1 ea 00 a1   j.!
+
+        ld      a,0a2h          ; 0bf4 3e a2   >"
+        ld      (0a000h),a      ; 0bf6 ea 00 a0   j.
+
+        ld      a,(0c002h)      ; 0bf9 fa 02 c0   z.@
+        ld      (0a100h),a      ; 0bfc ea 00 a1   j.!
+
+        ld      a,0a3h          ; 0bff 3e a3   >#
+        ld      (0a000h),a      ; 0c01 ea 00 a0   j.
+
+        ld      a,(0c003h)      ; 0c04 fa 03 c0   z.@
+        ld      (0a100h),a      ; 0c07 ea 00 a1   j.!
+
+        ld      a,0a0h          ; 0c0a 3e a0   >
+        ld      (0a000h),a      ; 0c0c ea 00 a0   j.
+
+        ld      a,0c0h          ; 0c0f 3e c0   >@
+        ld      (0a100h),a      ; 0c11 ea 00 a1   j.!
+
+        ld      a,0             ; 0c14 3e 00   >.
+        ld      (l4000),a       ; 0c16 ea 00 40   j.@
+
+        ld      a,0a0h          ; 0c19 3e a0   >
+        ld      (0a000h),a      ; 0c1b ea 00 a0   j.
+
+        ld      a,(0c000h)      ; 0c1e fa 00 c0   z.@
+        ld      (0a100h),a      ; 0c21 ea 00 a1   j.!
+
+; Exit cart bank reconfigure mode
+
+        ld      a,0ah           ; 0c24 3e 0a   >.
+        ld      (l0000),a       ; 0c26 ea 00 00   j..
+
+; Clear video ram
+
+        ld      hl,8000h        ; 0c29 21 00 80   !..
+        ld      de,l2000        ; 0c2c 11 00 20   ..
+        ld      a,0             ; 0c2f 3e 00   >.
+        ldh     (40h),a         ; 0c31 e0 40   `@
+l0c33:  ldh     a,(41h)         ; 0c33 f0 41   pA
+        and     2               ; 0c35 e6 02   f.
+        jr      nz,l0c33        ; 0c37 20 fa    z
+        ld      a,0             ; 0c39 3e 00   >.
+        ldi     (hl),a          ; 0c3b 22   "
+        dec     de              ; 0c3c 1b   .
+        ld      a,d             ; 0c3d 7a   z
+        or      e               ; 0c3e b3   3
+        jr      nz,l0c33        ; 0c3f 20 f2    r
+
+; Setup default video mode
+        ld      a,91h           ; 0c41 3e 91   >.
+        ldh     (40h),a         ; 0c43 e0 40   `@
+
+; Initialize the stack
+
+        ld      sp,0fffeh       ; 0c45 31 fe ff   1..
+
+; Execute selected game in the multicart
+
+        jp      l0100           ; 0c48 c3 00 01   C..
+

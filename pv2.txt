@@ -1,0 +1,110 @@
+<Informations about Pocket Voice part II>
+
+If you want to write data to Pocket Voice's Flash Rom, it needs to copy some routines includes the writing Flash Rom main routine to GB's work Ram 0xc000--0xdfff and jump to run it. It is because during flashing, the whole Flash Rom can't be read as normal, some times it just be read and checked in it's d7 or d6 only for waiting last page written ready. So some routines need to be run in GB's work ram area.
+
+The following routines source code of Pocket Voice v1.0--v2.0 are core part which must be included:
+
+.writepage:	; write 256 byte from (inc hl) to (inc de) flash rom and get some voice byte (inc bc)
+	ld	a,#0xa0		; write flash command
+	call	.flashcom	; return with c2h write to a000h
+1$:
+	ld	a,(hl+)		; point to Gameboy work Ram buffer (one page 256 bytes)
+	ld	(de),a		; point to Flash Rom address which page you want to write
+	inc	de
+	ld	a,e
+	and	#3
+	jp	nz,1$
+	ld	a,(.selectmode)	; 0 for record sound from mic, <>0 for write one page copy from rom
+	cp	#0
+	jp	nz,2$
+	call	.read1voicedata	; return with c=1 for no data read, if voice data exist then write it to (bc), inc bc
+2$:
+	ld	a,e
+	cp	#0
+	jp	nz,1$
+	jp	.waitwinbondok
+;	ret		; the time for next page voice data in buffer is enough for 'waitwinbondok'
+
+.read1voicedata:		; read one voice byte when it comes
+	ld	a,(0xa000)
+	bit	#3,a
+	jp	nz,1$
+	scf			; set c=1 for no data read
+	ret
+1$:
+	ld	a,(0xa001)
+	ld	(bc),a
+	inc	bc
+	scf
+	ccf			; set c=0 for read one voice data
+	ret
+
+.waitwinbondok:
+	push	hl
+	xor	a
+	ld	(.wrtimeoutcnt),a	; set time out counter =0000 (must be completed within 10ms)
+	ld	a,#2
+	ld	(.wrtimeoutcnt+1),a	; about 17ms
+	ld	hl,#0x7fff
+.waitwinbondok1:
+	ld	a,(hl)
+	xor	(hl)
+	and	#0x40
+	jp	z,1$
+	ld	a,(.selectmode)	; 0 for record sound from mic, <>0 for write one page copy from rom
+	cp	#0
+	jp	nz,0$
+	call	.read1voicedata	; return with c=1 for no data read, if voice data exist then write it to (bc), inc bc
+0$:
+	ld	a,(.wrtimeoutcnt)
+	sub	#1
+	ld	(.wrtimeoutcnt),a
+	ld	a,(.wrtimeoutcnt+1)
+	sbc	#0
+	ld	(.wrtimeoutcnt+1),a
+	jp	nc,.waitwinbondok1
+	pop	hl
+	scf
+	ccf		; return with 'c'=0 for failure
+	ret
+1$:
+	pop	hl
+	scf		; return with 'c'=1 for completed
+	ret
+
+.flashcom:
+	push	af
+	ld	a,#0x82		; set gameboy rom bank I/O write mode and voice chip record mode
+	ld	(0xa000),a	; (W)d2=1 Eop, d1=1 record, d0=1 play, d6=1 Flash Rom write enable (0 for rom bank I/O)
+	ld	a,#2
+	ld	(0x6000),a		; set winbond flash rom bank
+	xor	a
+	ld	(0x7000),a
+	ld	a,#0xc2		; set flash rom write mode and voice chip record mode
+	ld	(0xa000),a	; (W)d2=1 Eop, d1=1 record, d0=1 play, d6=1 Flash Rom write enable
+	ld	a,#0xaa
+	ld	(0x7555),a		; write 0xaa to 0x5555
+	ld	a,#0x82		; set gameboy rom bank I/O write mode and voice chip record mode
+	ld	(0xa000),a	; (W)d2=1 Eop, d1=1 record, d0=1 play, d6=1 Flash Rom write enable (0 for rom bank I/O)
+	ld	a,#1
+	ld	(0x6000),a		; set winbond flash rom bank
+	ld	a,#0xc2		; set flash rom write mode and voice chip record mode
+	ld	(0xa000),a	; (W)d2=1 Eop, d1=1 record, d0=1 play, d6=1 Flash Rom write enable
+	ld	a,#0x55
+	ld	(0x6aaa),a		; write 0x55 to 0x2aaa
+	ld	a,#0x82		; set gameboy rom bank I/O write mode and voice chip record mode
+	ld	(0xa000),a	; (W)d2=1 Eop, d1=1 record, d0=1 play, d6=1 Flash Rom write enable (0 for rom bank I/O)
+	ld	a,#2
+	ld	(0x6000),a		; set winbond flash rom bank
+	ld	a,#0xc2		; set flash rom write mode and voice chip record mode
+	ld	(0xa000),a	; (W)d2=1 Eop, d1=1 record, d0=1 play, d6=1 Flash Rom write enable
+	pop	af
+	ld	(0x7555),a		; write command to winbond flash rom
+	ld	a,#0x82		; set gameboy rom bank I/O write mode and voice chip record mode
+	ld	(0xa000),a	; (W)d2=1 Eop, d1=1 record, d0=1 play, d6=1 Flash Rom write enable (0 for rom bank I/O)
+	ld	a,(.bankno)
+	ld	(0x6000),a	; set current rom bank
+	ld	a,#0xc2		; set flash rom write mode and voice chip record mode
+	ld	(0xa000),a	; (W)d2=1 Eop, d1=1 record, d0=1 play, d6=1 Flash Rom write enable
+	ret
+

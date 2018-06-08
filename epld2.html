@@ -1,0 +1,311 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>epld2</title>
+
+
+<meta name="Microsoft Theme" content="binaer2 111">
+<meta name="Microsoft Border" content="none">
+</head>
+
+<body background="_themes/binaer2/rain.gif" bgcolor="#0000FF" text="#000000" link="#0000FF" vlink="#0000FF" alink="#0000FF"><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!-- ------------------------- -->
+<div align="left">
+
+<!--mstheme--></font><table border="1" width="90%" style="border: medium none rgb(255,255,0)" bordercolordark="#666666" bordercolorlight="#CCCCCC">
+  <tr VALIGN="bottom">
+    <td ALIGN="left" COLSPAN="5" height="76" style="font-family: cursive; color: rgb(255,255,0)" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font face="Arial" size="4" color="#0000FF"><strong><u>Pinning GameBoy connector to EPM7064SLC84, parallel
+    interface connector to EPM7064SLC84 and interface to power, LED, relay and ByteBlaster</u></strong></font><p>&nbsp;<!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="19" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#0000FF"><strong>Pin-Nr.
+    Gameboy-Connector</strong></font><!--mstheme--></font></td>
+    <td ALIGN="left" height="19" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#0000FF"><strong>Pin-Nr.
+    EPM7064SLC84</strong></font><!--mstheme--></font></td>
+    <td ALIGN="left" height="19" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="19" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#0000FF"><strong>Pin-Nr.
+    parallel interface</strong></font><!--mstheme--></font></td>
+    <td ALIGN="left" height="19" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#0000FF"><strong>Pin-Nr.
+    EPM7064SLC84</strong></font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">1 (Vcc)</font><!--mstheme--></font></td>
+    <td ALIGN="center" STYLE="vnd.ms-excel.numberformat:@" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">+5V (via relay)</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">1 (Strobe)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">54</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">2 (CLK)</font><!--mstheme--></font></td>
+    <td ALIGN="center" STYLE="vnd.ms-excel.numberformat:0.00" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">GND</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">2 (D0)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">58</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">3 (WR)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">8</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">3 (D1)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">60</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">4 (RD)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">10</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">4 (D2)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">61</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">5 (CSU3)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">9</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">5 (D3)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">63</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">6 (A0)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">11</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">6 (D4)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">64</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">7 (A1)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">12</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">7 (D5)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">65</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">8 (A2)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">15</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">8 (D6)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">67</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">9 (A3)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">16</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">9 (D7)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">68</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">10 (A4)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">17</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">10 (Ackn)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">69</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">11 (A5)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">18</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">11 (Busy)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">70</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">12 (A6)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">20</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">12 (PE)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">73</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">13 (A7)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">21</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">13 (SLCT)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">74</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">14 (A8)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">22</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">14 (AutoFeed)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">55</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">15 (A9)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">24</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">15 (Err)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">not
+    connected</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">16 (A10)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">25</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">16 (Init)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">56</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">17 (A11)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">27</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">17 (SLCT IN)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">57</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">18 (A12)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">28</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">18 (Gnd)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">not
+    connected</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">19 (A13)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">29</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">19 (Gnd)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">not
+    connected</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">20 (A14)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">30</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">20 (Gnd)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">not
+    connected</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">21 (A15)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">31</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">21 (Gnd)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">not
+    connected</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">22 (D0)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">33</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">22 (Gnd)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">not
+    connected</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">23 (D1)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">34</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">23 (Gnd)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">not
+    connected</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">24 (D2)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">35</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">24 (Gnd)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">not
+    connected</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">25 (D3)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">36</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">25 (Gnd)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">GND</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">26 (D4)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">37</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">27 (D5)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">39</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">28 (D6)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">40</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" STYLE="vnd.ms-excel.numberformat:@" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#0000FF"><strong>external power</strong></font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#0000FF"><strong>Pin-Nr.
+    EPM7064SLC84</strong></font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">29 (D7)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">41</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" STYLE="vnd.ms-excel.numberformat:@" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">+5V</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">3,13,26,38,43,53,66,78</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">30 (Reset)</font><!--mstheme--></font></td>
+    <td ALIGN="center" STYLE="vnd.ms-excel.numberformat:@" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">+5V (via relay)</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" STYLE="vnd.ms-excel.numberformat:@" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">GND</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">1,2,7,19,32,42,47,59,72,82,83,84</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">31 (AudioIn)</font><!--mstheme--></font></td>
+    <td ALIGN="center" STYLE="vnd.ms-excel.numberformat:@" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">44</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="16" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">32 (Gnd)</font><!--mstheme--></font></td>
+    <td ALIGN="center" STYLE="vnd.ms-excel.numberformat:@" height="16" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">GND</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="16" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#0000FF"><strong>EPM7064SLC84</strong></font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font color="#0000FF"><strong>interface to LED
+    and relay</strong></font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" STYLE="vnd.ms-excel.numberformat:@" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#0000FF"><strong>ByteBlaster Interface(JTAG)</strong></font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#0000FF"><strong>Pin
+    EPM7064SLC84 *</strong></font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" STYLE="vnd.ms-excel.numberformat:@" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">Pin 79</font><!--mstheme--></font></td>
+    <td ALIGN="left" STYLE="vnd.ms-excel.numberformat:@" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">via T.B.D. Ohm to +5V of relay</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" STYLE="vnd.ms-excel.numberformat:@" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">Pin 1 (TCK)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">62</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" STYLE="vnd.ms-excel.numberformat:@" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">Pin 77</font><!--mstheme--></font></td>
+    <td ALIGN="left" STYLE="vnd.ms-excel.numberformat:@" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">to cathode of LED and anode</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" STYLE="vnd.ms-excel.numberformat:@" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">Pin 3 (TDO)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">71</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">of LED via
+    470 Ohm to +5V</font><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" STYLE="vnd.ms-excel.numberformat:@" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">Pin 5 (TMS)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">23</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" STYLE="vnd.ms-excel.numberformat:@" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">Pin 9 (TDI)</font><!--mstheme--></font></td>
+    <td ALIGN="center" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#400040">14</font><!--mstheme--></font></td>
+    <td ALIGN="left" height="18" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font></td>
+  </tr>
+  <tr VALIGN="bottom">
+    <td ALIGN="left" height="36" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><font FACE="Arial" color="#0000FF">*</font><font color="#400040" FACE="Arial"> put 1K pullup resistor on each JTAG signal</font><!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Arial, Arial, Helvetica">
+</div><!-- ------------------------- -->
+<!-- ENDE DER KONVERTIERTEN AUSGABE -->
+<!-- ------------------------- -->
+<font SIZE="-1"><i>
+
+<p><br>
+</i><font SIZE="+0"></p>
+</font></font>
+<!--mstheme--></font></body>
+</html>

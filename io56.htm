@@ -1,0 +1,586 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+
+<head>
+<title>IO-56</title>
+<!--Created:	13-Apr-97By:			Pascal Felber-->
+<!-- #include "PF header.incl" -->
+<!-- BASE HREF="http://lsewww.epfl.ch/~felber/IO-56/index.html" -->
+<!-- end include -->
+
+
+<meta name="Microsoft Theme" content="binaer2 111">
+<meta name="Microsoft Border" content="none">
+</head>
+
+<body background="_themes/binaer2/rain.gif" bgcolor="#0000FF" text="#000000" link="#0000FF" vlink="#0000FF" alink="#0000FF"><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<h1 align="center"><!--mstheme--><font face="arial black, Arial, Helvetica" color="#009900"><u>IO-56 Reader/Writer for NES, SNES and GameBoy</u><!--mstheme--></font></h1>
+
+<h3 align="center"><!--mstheme--><font face="arial black, Arial, Helvetica" color="#FFCC00">Docu version 1.2.1 and software 1.5a3 (DOS and Windows)<!--mstheme--></font></h3>
+<!-- ############################################################ -->
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><a HREF="io56.htm#News">News</a> <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><a HREF="io56.htm#What">What is it?</a> <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><a HREF="io56.htm#Changes">Changes</a> <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><a HREF="io56.htm#Disclaimer">Disclaimer</a> <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><a HREF="io56.htm#Requirements">System Requirements</a> <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><a HREF="io56.htm#Schematics">Schematics and Programs</a> <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><a HREF="io56.htm#How">How does it work?</a> <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><a HREF="io56.htm#Building">Building the IO-56</a> <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><a HREF="io56.htm#Programs">The Programs</a> <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><a HREF="io56.htm#Buying">Buying the IO-56</a> <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><a HREF="io56.htm#Acknowledgements">Acknowledgements</a> <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!-- ############################################################ -->
+
+<h2><!--mstheme--><font face="arial black, Arial, Helvetica" color="#3366FF"><a NAME="News"></a>News<!--mstheme--></font></h2>
+
+<p>The <b>IO-56 windows version</b> (source is included) from Jason Millard is <a href="download/IO-56&#32;source&#32;and&#32;exes.zip">here</a>. </p>
+
+<p><b>IO-56 1.5a3 DOS</b>: the latest DOS version is available from <a HREF="download/io56.zip">here</a>. </p>
+
+<p>IO-56 1.5 is a complete rewrite of the IO-56 software. A single application is used for
+all extensions. The source code is also much clearer and more modular. It compiles with
+the freely-available C compiler <a HREF="http://www.delorie.com/djgpp/">DJGPP</a> (DOS
+port of GNU C). </p>
+
+<p>IO-56 1.5&nbsp; supports the following extensions: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Debug (no extension)<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Test<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">GameBoy<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">NES<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">SNES<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>For using the IO-56 program, you must have a DOS Protected Mode Interface (DPMI). For
+instance, Windows 95 provides a DPMI.</p>
+
+<p>IO-56 expects options on the command line. Some options are global to all modules, and
+some are specific to one module. Global options are expected after the extension name,
+specific options are expected after global options, and commands are expected after
+specific options. Here are the options accepted by the IO-56 software: </p>
+
+<!--mstheme--></font><pre>
+Usage: IO-56 {DEBUG | TEST | GB | NES | SNES} [glob_opt...] [ext_opt...] [command...]
+
+Global options:
+    -p nb     Specify the address of the card: 0 = 0x300, 1 = 0x310 (default: 0)
+    -w nb     Specify the time in ms. to wait between I/O accesses  (default: 0)
+
+Commands:
+    -a        Analyze the cartridge and print informations
+              Supported by: GB, NES, SNES
+    -s file   Save cartridge ROM in a file
+              Supported by: GB, NES, SNES
+    -b file   Backup cartridge save-RAM in a file
+              Supported by: GB, SNES
+    -r file   Restore cartridge save-RAM from a file
+              Supported by: GB, SNES
+    -c        Clear cartridge save-RAM
+              Supported by: GB, SNES
+    -t        Test cartridge save-RAM (WARNING: save-RAM will be cleared)
+              Supported by: GB, SNES
+    -d        Debug the extension
+              Supported by: TEST, NES, SNES
+
+DEBUG extension:
+              The DEBUG extension is a simple cable with NO connections. All
+              lines of the ISA card are configured as output. Output signals
+              can be checked using a multimeter.
+
+NES extension:
+    -v        Verify (read the cartridge twice)
+    -v -v     Verify even more
+    -wa       The cartridge has VRAM
+    -wo       The cartridge has VROM
+    -m nb     Specify the memory controler (MMC) of the card
+    -nc nb    Specify the number of character ROM banks
+    -np nb    Specify the number of program ROM banks
+    -lc nb    Specify the length of character ROM banks
+    -lp nb    Specify the length of program ROM banks
+    -f nb     Specify format of the save file: 0 = raw, 1 = iNES (default: 1)
+</pre><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<h3><!--mstheme--><font face="arial black, Arial, Helvetica" color="#FFCC00">Example<!--mstheme--></font></h3>
+
+<p>For analysing a cartridge: </p>
+
+<!--mstheme--></font><pre>    io-56 gb -a
+    io-56 nes -m 1 -wa -a
+    io-56 snes -a
+</pre><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font><pre>For saving a cartridge: </pre><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font><pre>    io-56 gb -s filename.gb
+    io-56 nes -m 1 -wa -s filename.nes
+    io-56 snes -s filename.sn
+</pre><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>For backing-up save-RAM: </p>
+
+<!--mstheme--></font><pre>    io-56 gb -b filename.bak
+    io-56 snes -b filename.bak
+</pre><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>For restoring save-RAM: </p>
+
+<!--mstheme--></font><pre>    io-56 gb -r filename.bak
+    io-56 snes -r filename.bak
+</pre><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>For clearing save-RAM: </p>
+
+<!--mstheme--></font><pre>    io-56 gb -c
+    io-56 snes -c
+</pre><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>For testing save-RAM (warning: this will also clear save RAM): </p>
+
+<!--mstheme--></font><pre>    io-56 gb -t
+    io-56 snes -t
+</pre><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>For saving zelda 1 on the NES: </p>
+
+<!--mstheme--></font><pre>    io-56 nes -m 1 -nc 0 -s zelda.nes
+</pre><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<h3><!--mstheme--><font face="arial black, Arial, Helvetica" color="#FFCC00">Limitations<!--mstheme--></font></h3>
+
+<p>The GameBoy extension does not backup/restore save-RAM correctly.</p>
+
+<p>The NES extension is still primitive. I had a lot of hard work trying to make the
+software automatically recognize the mank switch (MMC) type of the cartridge. I also had
+problems in detecting whether the cartridge has VROM or VRAM. I tried to write some data,
+and read it back, to test if VRAM is present, but it seems that this can mess up the MMC,
+and bank switching does not work anymore after this test until next reset. So, at the
+moment, automatic MMC and VROM/VRAM detection as been disabled, and they must be specified
+on the command line. </p>
+
+<p>The NES extension includes a powerful debug mode (use the '-d' flag). You can
+read/write values to specific PRG/CHR addresses, and calculate checksums on PRG/CHR banks.
+This allows to observe how bank switching works (bank switching is achieved by writing
+some values at specific memory addresses). It is also possible to save a PRG/CHR memory
+area from the debugger, and thus build an image file incrementally by manually switching
+and saving banks. A small help is available in debug mode. </p>
+
+<h2><!--mstheme--><font face="arial black, Arial, Helvetica" color="#3366FF"><a NAME="What"></a>What is it?<!--mstheme--></font></h2>
+
+<p>The IO-56 is a general-purpose input/output ISA card for PC computers. It provides 48
+input/output + 8 output signals, as well as GND, +5V, +12V, and -12v. </p>
+
+<p>In combination with specific extensions and software, it allows to transfer data from
+cartridge systems (like game consoles) to the computer. It provides an easy way for
+translating cartridge into image files required by software emulators. </p>
+
+<p>An extension is basically a cable with a two connectors and a small PCB. The first
+connector plugs into the IO-56, while the other connector is free for receiving
+cartridges. Since cartridges for different systems have different size, pinout, or
+architecture, a different extension is required for each cartridge type, while no
+modification to the IO-56 is required. </p>
+
+<p>Although it is technically possible with the IO-56 to upload an image file to a
+writable cartridge (with DRAM or Flash-ROM), I did not develop such a cartridge. I'll
+develop the required software if somebody provides me with such a cartridge. </p>
+<!-- ############################################################ -->
+
+<h2><!--mstheme--><font face="arial black, Arial, Helvetica" color="#3366FF"><a NAME="Changes"></a>Changes<!--mstheme--></font></h2>
+
+<h3><!--mstheme--><font face="arial black, Arial, Helvetica" color="#FFCC00">Changes in version 1.2.1<!--mstheme--></font></h3>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Minor revisions in the documentation.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Added the NES list (with informations about bank switches).<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Added schematic and PCB files in PROTEL format.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<h3><!--mstheme--><font face="arial black, Arial, Helvetica" color="#FFCC00">Changes in version 1.2<!--mstheme--></font></h3>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">New Web page.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Added the SNES extension.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Added the program for reading SNES cartridges.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<h3><!--mstheme--><font face="arial black, Arial, Helvetica" color="#FFCC00">Changes in version 1.1<!--mstheme--></font></h3>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Added a new line to pin 38 of the NES connector, used for bank switching .<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Lines CD0 and CD1 of the NES connector were inversed in the PCB.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Lines CA10 and CA11 of the NES connector were inversed in the PCB and the schematics.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Added the program for reading NES cartridges.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!-- ############################################################ -->
+
+<h2><!--mstheme--><font face="arial black, Arial, Helvetica" color="#3366FF"><a NAME="Disclaimer"></a>Disclaimer<!--mstheme--></font></h2>
+
+<p>I've built several IO-56 cards and they all worked fine, but I can't be held
+responsible for anything that might happen to your hardware. </p>
+<!-- ############################################################ -->
+
+<h2><!--mstheme--><font face="arial black, Arial, Helvetica" color="#3366FF"><a NAME="Requirements"></a>System Requirements<!--mstheme--></font></h2>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">The IO-56 ISA card<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">An IBM-PC compatible computer (80386 or better)<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">One free ISA slot (8 or 16 bit)<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">DOS &gt;= 3.3<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!-- ############################################################ -->
+
+<h2><!--mstheme--><font face="arial black, Arial, Helvetica" color="#3366FF"><a NAME="Schematics"></a>Schematics and Programs<!--mstheme--></font></h2>
+
+<p>The included poscript files contain the schematics of the card, which is a double-sided
+PCB. There are also a four extension cards at the moment: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">A test extension to test the IO-56<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">A GameBoy extension to backup GameBoy cartridges<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">A NES extension to backup NES cartridges<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">A SNES extension to backup SNES cartridges<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>These extension cards must be used together with specific programs, which are provided
+in both source and compiled form. </p>
+
+<p>Here are the files you need to build and use the IO-56. The schematics and PCB files
+are in different formats: postscript (highly recommended), gif at 150 and 300 dpi. They
+are also available in PROTEL schematic and PROTEL autotrax format. </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><a href="io56.gif">Schematics</a> available on request<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">PCBs available on request<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica"><a href="download/io56.zip">Programs</a> <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!-- ############################################################ -->
+
+<h2><!--mstheme--><font face="arial black, Arial, Helvetica" color="#3366FF"><a NAME="How"></a>How does it work?<!--mstheme--></font></h2>
+
+<p>The U1 IC (comparator) decodes the address written on the ISA bus. If address is in the
+0x300-0x30F range, and the /IOR or the /IOR are low (meaning the computer is reading or
+writing to the ISA bus), the pin 19 of U1 goes down and enables the U4 demultiplexer and
+the U2 bus transceiver. The direction of this transceiver is determined by the /IOR
+signal. </p>
+
+<p>The U4 demultiplexer decodes the addresses in the 0x300-0x30F range: the U5 8255 is
+selected using addresses 0x300-0x303, the U6 8255 is selected using addresses 0x304-0x307,
+and the U7 flip-flop is selected using address 0x308. </p>
+
+<p>If the switch S1 is set, the address range becomes 0x310-0x31F. This enables to have
+two IO-56 cards in the same computer listening to different addresses. </p>
+
+<p>The fuses (F1, F2, and F3) protect the motherboard from short circuits. </p>
+<!-- ############################################################ -->
+
+<h2><!--mstheme--><font face="arial black, Arial, Helvetica" color="#3366FF"><a NAME="Building"></a>Building the IO-56<!--mstheme--></font></h2>
+
+<h3><!--mstheme--><font face="arial black, Arial, Helvetica" color="#FFCC00">ISA Card<!--mstheme--></font></h3>
+
+<p>You need the following components: </p>
+
+<!--mstheme--></font><table BORDER="1" bordercolordark="#666666" bordercolorlight="#CCCCCC">
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">U1<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">74HC688<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">U2<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">74HC245<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">U3<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">74HC00<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">U4<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">74HC139<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">U5, U6<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">8255<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">U7<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">74HC574<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">R1<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">10 kOhm resistor<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">C1, C2<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">22 uF 16V capacitor<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">C3, C4<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">47 uF 16V capacitor<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">C5, C6, C7, C8, C9, C10, C11, C12, C13<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">100 nF capacitor<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">F1, F2, F3<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">500 mA fuse (fast)<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">S1<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">DIL switch<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">CON2<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">64 pins connector<!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>Make the PCB for the ISA card. Put the vias (you can solder small pieces of metal
+between both layers through the vias). Be careful not to forget any of the vias. Solder
+the components (resistors, capacitors...), the connector, and the IC sockets. <b>Some pins
+of the components must be soldered on both sides of the PCB, since they act as vias!</b>
+Double-check that everything is correctly soldered and that there is no short circuit. Put
+the fuses in their sockets, but not the ICs. </p>
+
+<p><b>Note: always shut down the computer when inserting (removing) an extension into
+(from) the IO-56</b>. </p>
+
+<p>You can now insert the ISA card into a free ISA slot (8 or 16 bit) of your PC. Be sure
+that none of the components is in contact with any metallic part of the PC. Turn the PC
+on, and check that the voltage of pins 58..64 of the connector are correct (0V, +5V, +12V,
+and -12V) with a multimeter. Turn off the PC. </p>
+
+<p>Insert the test extension. Turn the PC on. The LED of the test extension should light
+on. Turn off the PC. </p>
+
+<p>Put the ICs in their sockets. Insert the test extension. Turn the PC on. Run the <code>test.exe</code>
+program. If no error is printed, the IO-56 works fine on your machine. If you get errors,
+try to slow down the program using the -w flag (e.g. <code>test -w 200</code>). </p>
+
+<h3><!--mstheme--><font face="arial black, Arial, Helvetica" color="#FFCC00">Test extension<!--mstheme--></font></h3>
+
+<p>You need the following components: </p>
+
+<!--mstheme--></font><table BORDER="1" bordercolordark="#666666" bordercolorlight="#CCCCCC">
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">L1<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">LED<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">R1<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">470 Ohm resistor<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">CON1<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">64 pins connector<!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<h3><!--mstheme--><font face="arial black, Arial, Helvetica" color="#FFCC00">GameBoy extension<!--mstheme--></font></h3>
+
+<p>You need the following components: </p>
+
+<!--mstheme--></font><table BORDER="1" bordercolordark="#666666" bordercolorlight="#CCCCCC">
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">CON1<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">40 pins connector<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">CON2<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">GameBoy connector<!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>You will need an original GameBoy connector. </p>
+
+<h3><!--mstheme--><font face="arial black, Arial, Helvetica" color="#FFCC00">NES extension<!--mstheme--></font></h3>
+
+<p>You need the following components: </p>
+
+<!--mstheme--></font><table BORDER="1" bordercolordark="#666666" bordercolorlight="#CCCCCC">
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">CON1<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">64 pins connector<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">CON2<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">NES connector<!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>You will need an original NES connector. Be sure that the connector pins are correctly
+aligned with the PCB pins. <b>When inserting a cartridge into the NES connector, you must
+push on the extremity of the cartridge so that it is parallel to the PCB, or else the
+cartridge and the connector won't be in contact.</b> </p>
+
+<h3><!--mstheme--><font face="arial black, Arial, Helvetica" color="#FFCC00">SNES extension<!--mstheme--></font></h3>
+
+<p>You need the following components: </p>
+
+<!--mstheme--></font><table BORDER="1" bordercolordark="#666666" bordercolorlight="#CCCCCC">
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">CON1<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">64 pins connector<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">CON2<!--mstheme--></font></td>
+    <td><!--mstheme--><font face="Arial, Arial, Helvetica">SNES connector<!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>You don't need to use an original SNES connector (actually, original SNES connectors
+are difficult to insert/solder on the PCB). You need a connector with the correct spacing
+between pins (0.1 inch = 2.54 mm). </p>
+<!-- ############################################################ -->
+
+<h2><!--mstheme--><font face="arial black, Arial, Helvetica" color="#3366FF"><a NAME="Programs"></a>The Programs<!--mstheme--></font></h2>
+
+<p><b>A new version of the programs is finished. There is now only one program for all
+extensions.</b> </p>
+
+<h3><!--mstheme--><font face="arial black, Arial, Helvetica" color="#FFCC00">test.exe<!--mstheme--></font></h3>
+
+<p>The <code>test.exe</code> program allows testing the IO-56. You must have connected the
+<i>TEST</i> extension into the IO-56. Start the program with the <code>-h</code> flag for
+getting some help: </p>
+
+<!--mstheme--></font><pre>
+    Usage: test [-p int] [-w int]
+        -p    Specify the address of the card (0 = 0x300, 1 = 0x310)
+        -w    Specify the time to wait between accesses to the cartridge
+</pre><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<h3><!--mstheme--><font face="arial black, Arial, Helvetica" color="#FFCC00">gb.exe<!--mstheme--></font></h3>
+
+<p>The <code>gb.exe</code> program allows reading GameBoy cartridges. You must have
+connected the <i>GB</i> extension into the IO-56. You can analyze a cartridge, save the
+ROM in a file, backup the SRAM in a file or restore the SRAM. Start the program with no
+argument for getting some help: </p>
+
+<!--mstheme--></font><pre>
+    Usage: gb [-p int] [-w int] [-t | -d | -a | -s file | -b file | -r file]
+        -p    Specify the address of the card (0 = 0x300, 1 = 0x310)
+        -w    Specify the time to wait between accesses to the cartridge
+        -a    Analyze the cartridge
+        -s    Save the cartridge in a file
+        -b    Backup the SRAM and save it in a file
+        -r    Restore the SRAM from a file
+</pre><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>For printing information about a cartridge: </p>
+
+<!--mstheme--></font><pre>    gb -a
+</pre><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font><pre>For reading a cartridge and save it: </pre><!--mstheme--><font face="Arial, Arial, Helvetica"><!--mstheme--></font><pre>    gb -s filename.gb
+</pre><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<h3><!--mstheme--><font face="arial black, Arial, Helvetica" color="#FFCC00">nes.exe<!--mstheme--></font></h3>
+
+<p>The <code>nes.exe</code> program allows reading NES cartridges. You must have connected
+the <i>NES</i> extension into the IO-56. <b>When running the program, you must keep
+pushing on the extremity of the cartridge so that it is parallel to the PCB</b> (you can
+block it in this position using adhesive tape). The IO-56 is able to read cartridges
+bigger than 32 kB (cartridge that use a bank switch), but you must know the type of the
+bank switch before reading the cartridge. There is no way to automatically detect which
+bank switch is used. I'm maintaining a list of NES games with informations on the bank
+switch they use. You can get it from <a href="neslist.txt">here</a> (the bank switch type
+is listed in the &quot;Map&quot; column). The bank switch numbers are the same as those
+used by iNES, and are not the number written on the bank switch IC inside the nes
+cartridges. If there is no number, it means that the cartridge has no bank switch. If the
+game you'd like to backup is not in the list, a good solution is to read the first bank of
+the cartridge (without using the <code>-b</code> flag), and to run it with iNES with
+verbose mode activated. It will print the accesses made to the bank switch and you will be
+able to determine which bank switch is used. You can also send this file to me, and I'll
+tell you the number. I will continue to improve the <code>nes.exe</code> program as I get
+feedback from people that use it, in order to let it support more types of bank switches.
+Note that the <code>-a</code> flag won't automatically detect which bank switch is used by
+the cartridge, and thus should be used together with the <code>-b</code> flag. Start the
+program with no argument for getting some help: </p>
+
+<!--mstheme--></font><pre>
+    Usage: nes [-v] [-b int] [-nc int] [-np int] [-p int] [-w int] [-a | -sp file | -sc file]
+        -v    Verify
+        -b    Specify the bank switch of the card
+        -p    Specify the address of the card (0 = 0x300, 1 = 0x310)
+        -nc   Specify the number of character ROM banks
+        -np   Specify the number of program ROM banks
+        -w    Specify the time to wait between accesses to the cartridge
+        -a    Analyze the cartridge
+        -sp   Save the program ROM in a file
+        -sc   Save the character ROM in a file
+        -sn   Save the cartridge in an iNES file
+</pre><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>For reading a cartridge (without bank switch) and save it in the iNES format: </p>
+
+<!--mstheme--></font><pre>
+    nes -v -sn filename.nes
+</pre><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>The -v flag will verify twice each byte read from the cartridge. If you get error
+messages, the cartridge is probably not inserted correctly. </p>
+
+<p>For reading a cartridge (with bank switch) and save it in the iNES format: </p>
+
+<!--mstheme--></font><pre>
+    nes -v -b <switch_number> -sn filename.nes
+</pre><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<h3><!--mstheme--><font face="arial black, Arial, Helvetica" color="#FFCC00">snes.exe<!--mstheme--></font></h3>
+
+<p>The <code>snes.exe</code> program allows reading SNES cartridges. You must have
+connected the <i>SNES</i> extension into the IO-56. At the moment, you can analyze a
+cartridge and save the ROM in a file. Start the program with no argument for getting some
+help: </p>
+
+<!--mstheme--></font><pre>
+    Usage: snes [-v] [-p int] [-w int] [-a | -s file]
+        -v    Verify
+        -p    Specify the address of the card (0 = 0x300, 1 = 0x310)
+        -w    Specify the time to wait between accesses to the cartridge
+        -a    Analyze the cartridge
+        -s    Save the ROM in a file
+</pre><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>For printing information about a cartridge: </p>
+
+<!--mstheme--></font><pre>
+    snes -a
+</pre><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<p>For reading a cartridge and save it: </p>
+
+<!--mstheme--></font><pre>
+    snes -s filename.sn
+</pre><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!-- ############################################################ -->
+
+<h2><!--mstheme--><font face="arial black, Arial, Helvetica" color="#3366FF"><a NAME="Buying"></a>Buying the IO-56<!--mstheme--></font></h2>
+
+<p>I do not sell the IO-56, but there is a commercial ISA card that is equivalent to the
+IO-56. It also uses two 8255 chips, and provides 48 I/O (instead of 56). The IO-56
+software supports this card (starting with 1.5a3). The IO-48 is more
+&quot;professional&quot; than the IO-56 I built myself, and also cheaper. This card is
+being sold by Conrad Electronics (in Germany). It is priced at 99 DM, and its reference
+is: &quot;975842-??, Interface 48 I/O&quot;. You can get informations from <a HREF="http://www.english.conrad.de">Conrad's web site</a>: click on &quot;Full Text
+Search&quot;, and enter &quot;975842&quot;. </p>
+
+<p>Once you get the IO-48, you must build a simple conversion cable. The schematics of
+this cable is available <a HREF="io48.htm">here</a>. You will need an external power
+supply (+5V). Do not forget to to wire the ground of the power supply to the ground of the
+64 pins connector (pins 58-60-62-64). </p>
+<!--<P>Since a lot of people asked me for buying the IO-56, I contacted a manufacturer for making the PCBs. You can buy the IO-56 from me at the following prices. Note that the components are rather expensive here in Switzerland, and you will perhaps prefer buying them by yourself.</P><P>Note that the prices may seem high, but this is not industrial production. I'm not trying to make money, but to help people that don't have the technical knowledge for building the IO-56 by themselves. I strongly encourage you to build it by yourself.</P><H3>ISA Card PCB (double-sided)</H3><PRE>- PCB only (without vias, sockets and components)               35 US$  For people familiar with electronics...  Includes the "test" extension- with vias and sockets, without components                     50 US$  For people that have some knowledge about electronics...  Includes the "test" extension- fully tested, with vias, sockets and components               80 US$  For people that don't want to deal with electronics...  Includes the "test" extension</PRE><H3>Extension</H3><PRE>- GameBoy extension                                             20 US$  Includes PCB, GB connector and cable- NES extension                                                 25 US$  Includes double-sided PCB, NES connector and cable- SuperNES extension                                            20 US$  Includes PCB, SuperNES connector and cable</PRE><H3>Future extensions (not yet available)</H3><PRE>- GameGear extension                                            25 US$  Includes double-sided PCB, NES connector and cable- MasterSystem extension                                        25 US$  Includes double-sided PCB, MasterSystem connector and cable- Genesis extension                                             25 US$  Includes double-sided PCB, Genesis connector and cable- Lynx extension- PC-Engine extension</PRE><H3>Shipping and Handling</H3><P>Prices do not include shipping. Add 10US$ for Europe, and 20US$ for the rest of the world.</P><H3>Ordering</H3><P>Send me an e-mail for ordering informations and product availibility.</P>-->
+<!-- ############################################################ -->
+
+<h2><!--mstheme--><font face="arial black, Arial, Helvetica" color="#3366FF"><a NAME="Acknowledgements"></a>Acknowledgements<!--mstheme--></font></h2>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Marat Fayzullin, for his help with NES bank switching<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">DiskDude, for its SNES Kart v1.6<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Matthew J. Richey, for his help with NES bank switching<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Y0SHi for his great NES technical document<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/binaer2/zerbul1a.gif" width="20" height="20" hspace="11"></td><td valign="top" width="100%"><!--mstheme--><font face="Arial, Arial, Helvetica">Soeren Gust, for his help in pointing out and correcting all my bugs<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="Arial, Arial, Helvetica">
+<!-- #include "PF footer.incl" -->
+
+<p>Last Updated 14-Aug-98, Pascal Felber</p>
+<!--mstheme--></font></body>
+</html>

@@ -1,0 +1,148 @@
+Modification of a MBC5 Cardridge
+================================
+
+Search for GB Color Games with save option. 64kbit or 256kbit will fit the
+needs. I took a cheap NBC Pro 99 cardridge (8Mbit ROM, 64kbit RAM).
+DISCONNECT THE BATTERY FIRST !
+To exchange a 256kbit RAM is not necessary but recommended, because more and
+more new games are out there which use more than 256kbit RAM.
+To remove the RAM and ROM it is the best to use a special "hot air" SMD 
+remove solder iron. If you do not have access to one, bend every single pin 
+carefully up (with help of a needle) by heating it. 
+Be careful and do not lift the pads !
+
+The RAMs used here are standard devices, find the datasheets here:
+http://www.usa.samsungsemi.com/products/family/browse/sram.htm
+http://www.usa.samsungsemi.com/products/summary/powersram/KM681000E.htm
+http://www.usa.samsungsemi.com/products/newsummary/powersram/K6T0808C1D.htm
+http://www.hitachi.co.jp/Sicd/English/Products/memorye.htm
+Other suppliers also have these RAMs, the name of the types may differ from
+these above. Check datasheets for the same pinning.
+The Flash datasheet could be found here:
+http://developer.intel.com/design/flcomp/datashts/290606.htm
+
+As far as I know, there is only this Flash out there with this pinning, you
+can NOT use another ! Beside this, FLASH ID will differ and the progrmming
+software will not recognise the other device !
+DO NOT TAKE THE TSSOP DEVICE, YOU WILL NOT BE ABLE TO SOLDER THE THIN PINS !
+
+Bend the pins of the 1Mbit SRAM towards the case (see picture 1.). Nearly all 
+pins will fit to the pads on the PCB, except the following:
+1(NC), 2(A16), 28(A13), 29(WE#), 30(CS2), 31(A15), 32(VCC)
+Bend these straight (see picture 2.) then solder the IC to the pads. Pins 16 
+and 17 should touch the former pins 14 and 15. Pins 1, 2, 28, 29, 30, 31, 32 
+should not touch the PCB and should not be soldered at this time. Check if there 
+is a connection on the PCB from the former RAM pin 1 to the MBC5 pin 28 (RAM A14).
+256kbit cartridges should have these connection, 64kbit not.
+Next connect the open pins to the appropriate signal. The best is to use 0.2mm 
+copper wire with varnish insulation (used in transformers). The insulation varnish 
+can be easy removed by heating the wire with the solder iron and then put solder 
+tin on it, as long as you can see that the solder tin burns the varnish away.
+Make the follwoing connections:
+RAM pin
+   1     not connected, not used
+   2     MBC pin 26 (RAM A16)
+ ( 3     MBC pin 28 (RAM A14) see above, if there is a connection, leave this out)
+  28     MBC pin 29 (RAM A13)
+  29     MBC pin 30 (RAM WR#)
+  30     MM1134 pin 3 
+  31     MBC pin 27 (RAM A15)
+  32     C3 nearby leads VCC, pick up from there
+
+That was the easy part ! 
+
+Now the ROM is exchanged with a Flash device. You can take every device from 8Mbit 
+uwards, but the Intel 32Mbit/64Mbit (28F320J5/28F640J5) device is preferred, because 
+some programming software recognise this type. This articel describes the insertion 
+of the 28F640J5 type in conjunction with the use of the BUNG ExChanger (V2) programmer
+to program the cartridge. OTHER COMBINATIONS ARE NOT TESTED !
+Much soldering experience is recommended for this modification !
+Flash datasheet could be found here: 28F320J5, 28F640J5
+ROM pin view could be found here: 8Mbit ROM.
+The orientation on the PCB is like the RAM (cartridge connector points towards you, the
+MBC5 and the battery is on the upper side), pin 1 points to the left upper side.
+Connect a 0.2 mm copper wire (see above) to every pad and lead them to the right or left
+side for about 3 cm. Refer to picture ?, the datasheets and the table. 
+
+ROM  FLASH  wire   function   connect
+Pin   Pin    to                 to
+  1         left     NC 
+  2    13   left     A16
+  3     5   left     A15 
+  4     2   left     A12
+  5    45   right    A7 
+  6    46   right    A6 
+  7    47   right    A5 
+  8    48   right    A4 
+  9    49   right    A3 
+ 10    50   right    A2 
+ 11    51   right    A1 
+ 12    37   right    A0 
+ 13    38   right    D0 
+ 14    40   right    D1 
+ 15    33   right    D2 
+ 16    44   right    GND 
+ 17    31   right    D3 
+ 18    27   left     D4
+ 19    25   left     D5
+ 20    16   left     D6
+ 21    18   left     D7
+ 22    1    left     CE# 
+ 23    53   right    A10
+ 24    21   left     OE#
+ 25    54   right    A11
+ 26    52   right    A9
+ 27    43   right    A8
+ 28     3   left     A13
+ 29     4   left     A14
+ 30    12   left     A17
+ 31    11   left     A18
+ 32         right    VCC
+------------------------------------------------
+       7             CE1        GND
+      34             CE2        GND
+      28             VCCQ       VCC
+      22             WE#        cartridge pin 31
+      36             BYTE#      GND
+      56             VPEN       VCC, see text
+      29             GND        GND, see text
+      44             GND        GND
+      14             VCC        VCC
+       6             A22        MBC pin 25
+       8             A21        MBC pin 22
+       9             A20        MBC pin 21
+      10             A19        MBC pin 20
+      55             RP#        Reset#,
+                                cartridge pin 30
+
+      15                        not used
+      17                        not used
+      19                        not used
+      20                        not used
+      23                        not used
+      24                        not used
+      26                        not used
+      30                        not used
+      32                        not used
+      35                        not used
+      39                        not used
+      41                        not used
+      42                        not used
+
+
+
+Put adhensive textil tape with the size of the ROM above the wires, so that the pads are
+covered from it. Bend all pins of the Flash straight, see picture ? 2..
+Take some thicker wire (e.g. from resistor) and solder one on the lower end of C2 (VCC)
+pionting to right and another one at the lower left, 5mm above pin 32 (GND) to the GND 
+plane pointing left (refer to picture). These are used as a base to fix the device. 
+Solder them to pin 56 and 29 of the Flash. Now connect all wires to the appropriate 
+signal. Use a ohm meter to find the right one, keep the lines short. Below the dashed 
+line are additional connestions that have to be made to the Flash. Try to keep the 
+VCC/GND (14, 28, 44) lines as short as possible.
+Thats it, now our cartridge must look like this one on the picture .... and should work!
+
+SOME OTHER PROGRAMMING HARDWARE MAY USE AN OTHER WRITE LINE THAN THE AUDIO (CARTRIDGE
+PIN 31). YOU MUST CHANGE THIS IN THAT CASE !
+The BUNG programmer ALWAYS use the audio line (cartridge pin 31) to write the Flash 
+device !
